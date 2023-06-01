@@ -4,3 +4,12 @@
     font-weight: 500;
     margin-bottom: 0.833rem;
 }
+.deviceReqMsg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 3.5rem);
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}

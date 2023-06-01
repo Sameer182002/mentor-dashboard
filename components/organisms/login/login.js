@@ -1,7 +1,7 @@
 import styles from './login.module.css';
 import whatsapp from '../../../public/svgs/whatsapp.svg'
 import Image from 'next/image'
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { isValidMobileNumber } from '../../../utils/helper';
 import { Button } from '../../atoms';
 import { getLoginOtp } from '../../../apis';
@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { mobileNumberAtom , taIdAtom} from '../../../recoil-states/ta-atoms';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingAtom } from '../../../recoil-states/ui-atoms';
+import { deviceRequirementMessage } from '../../../utils/constants';
 
 
 
@@ -51,30 +52,36 @@ export function Login() {
 
 
     return (
-        <div className={styles.parentWrapper}>
-            <div className={styles.cotentSec}>
-                <div className={styles.logInBox}>
-                    <h1 className={styles.contentHead}>Login to continue</h1>
-                    <div className={styles.numberInput}>
-                        <Image src={whatsapp} alt="whatsapp" />
-                        <div style={{ fontSize: "16px", marginLeft: "10px", marginRight: "10px" }}>+91 -</div>
-                        <input
-                            style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}
-                            type="tel"
-                            value={mobile}
-                            placeholder="Enter Whatsapp Number"
-                            className={styles.input}
-                            onChange={handleChangeMobile}
+        <Fragment>
+            <div className={styles.parentWrapper}>
+                <div className={styles.cotentSec}>
+                    <div className={styles.logInBox}>
+                        <h1 className={styles.contentHead}>Login to continue</h1>
+                        <div className={styles.numberInput}>
+                            <Image src={whatsapp} alt="whatsapp" />
+                            <div style={{ fontSize: "16px", marginLeft: "10px", marginRight: "10px" }}>+91 -</div>
+                            <input
+                                style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}
+                                type="tel"
+                                value={mobile}
+                                placeholder="Enter Whatsapp Number"
+                                className={styles.input}
+                                onChange={handleChangeMobile}
+                            />
+                        </div>
+                        {!!mobileValidationErrMsg && <p className={styles.errorMessage}>{mobileValidationErrMsg}</p>}
+                        <Button 
+                            buttonText='Send Otp'
+                            onClickAction={getOtp}
                         />
                     </div>
-                    {!!mobileValidationErrMsg && <p className={styles.errorMessage}>{mobileValidationErrMsg}</p>}
-                    <Button 
-                        buttonText='Send Otp'
-                        onClickAction={getOtp}
-                    />
                 </div>
             </div>
-        </div>
+            <div className={styles.deviceMessage}>
+                <p>{deviceRequirementMessage}</p>
+            </div>
+        </Fragment>
+
 
     )
 }

@@ -1,5 +1,12 @@
+.parentWrapper{
+    display: none;
+}
+.deviceMessage{
+    composes : deviceReqMsg from '../../../styles/common.module.css'
+}
 @media screen and (min-width: 1024px)  {
     .parentWrapper{
+        display: block;
         background-color:#E8E8E8;
         height: calc(100vh - 3.5rem);
     }
@@ -71,5 +78,10 @@
         vertical-align:auto;
     }
 
+    .deviceMessage{
+        display: none;
+    }
+
+/* deviceReqMsg */
 
 }

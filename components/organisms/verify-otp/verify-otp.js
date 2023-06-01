@@ -1,4 +1,4 @@
-import { useState , useEffect} from 'react'
+import { useState , useEffect, Fragment} from 'react'
 import { Button } from '../../atoms'
 import styles from './verify-otp.module.css'
 import { isValidMobileNumber } from '../../../utils/helper'
@@ -7,6 +7,7 @@ import { taIdAtom } from '../../../recoil-states/ta-atoms'
 import { useRecoilValue } from 'recoil'
 import { mobileNumberAtom } from '../../../recoil-states/ta-atoms'
 import { useRouter } from 'next/router'
+import { deviceRequirementMessage } from '../../../utils/constants'
 
 
 export function VerifyOtp () {
@@ -87,33 +88,39 @@ export function VerifyOtp () {
     if(isLoading) return null
 
     return (
-        <div className={styles.parentWrapper}>
-            <div className={styles.otpSec}>
-                <div className={styles.logInBox}>
-                    <h1 className={styles.contentHead}>Verify Whatsapp Number</h1>
-                    <div style={{ fontSize: "16px", marginBottom: "20px" }}>We have sent an OTP on WhatsApp to verify Mobile {mobile}</div>
-                    <div className={styles.numberInput}>
-                        <input
-                            style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}
-                            maxLength={4}
-                            placeholder="Enter OTP"
-                            className={styles.input}
-                            onChange={handleChangeOtp}
-                            value={otp}
+        <Fragment>
+            <div className={styles.parentWrapper}>
+                <div className={styles.otpSec}>
+                    <div className={styles.logInBox}>
+                        <h1 className={styles.contentHead}>Verify Whatsapp Number</h1>
+                        <div style={{ fontSize: "16px", marginBottom: "20px" }}>We have sent an OTP on WhatsApp to verify Mobile {mobile}</div>
+                        <div className={styles.numberInput}>
+                            <input
+                                style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}
+                                maxLength={4}
+                                placeholder="Enter OTP"
+                                className={styles.input}
+                                onChange={handleChangeOtp}
+                                value={otp}
+                            />
+                        </div>
+                        {OtpValidationErrMsg && <p className={styles.errorMessage}>{OtpValidationErrMsg}</p>}
+                            <p className={styles.resendOtp} onClick={handleOtpResend}>
+                                <span className={`${!seconds && styles.reqOtp}`}>Resend OTP</span>
+                                {seconds > 0 && <span> in {seconds} seconds</span> }
+                            </p>
+                        <Button 
+                            buttonText='Verify OTP'
+                            onClickAction={handleOtpVerification}
                         />
                     </div>
-                    {OtpValidationErrMsg && <p className={styles.errorMessage}>{OtpValidationErrMsg}</p>}
-                        <p className={styles.resendOtp} onClick={handleOtpResend}>
-                            <span className={`${!seconds && styles.reqOtp}`}>Resend OTP</span>
-                            {seconds > 0 && <span> in {seconds} seconds</span> }
-                        </p>
-                    <Button 
-                        buttonText='Verify OTP'
-                        onClickAction={handleOtpVerification}
-                    />
                 </div>
             </div>
-        </div>
+            <div className={styles.deviceMessage}>
+                <p>{deviceRequirementMessage}</p>
+            </div>
+        </Fragment>
+
     )
 
 }
