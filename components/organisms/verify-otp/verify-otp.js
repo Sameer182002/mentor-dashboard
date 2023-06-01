@@ -3,9 +3,9 @@ import { Button } from '../../atoms'
 import styles from './verify-otp.module.css'
 import { isValidMobileNumber } from '../../../utils/helper'
 import { verifyOtp , resendOtp} from '../../../apis'
-import { userIdAtom } from '../../../recoil-states/student-atoms'
+import { taIdAtom } from '../../../recoil-states/ta-atoms'
 import { useRecoilValue } from 'recoil'
-import { mobileNumberAtom } from '../../../recoil-states/student-atoms'
+import { mobileNumberAtom } from '../../../recoil-states/ta-atoms'
 import { useRouter } from 'next/router'
 
 
@@ -30,10 +30,10 @@ export function VerifyOtp () {
     }, [seconds]);
 
 
-    const userId = useRecoilValue(userIdAtom)
+    const taId = useRecoilValue(taIdAtom)
 
     useEffect(() => {
-        if(userId){
+        if(taId){
             setIsLoading(false)
             return
         }
@@ -55,10 +55,9 @@ export function VerifyOtp () {
             if(otp.length !== 4){
                 throw new Error('OTP number should be of 4 digits')
             }
-            return alert('Waiting for backend routes ..')
             await verifyOtp({
                 otp,
-                // id:userId
+                taId
             })   
             router.push('/')         
         }
@@ -70,11 +69,11 @@ export function VerifyOtp () {
 
     async function handleOtpResend () {
 
+        setOtpValidationErrMsg('')
         try{
             if(seconds > 0){
                 return
             }
-            return alert('Waiting for backend routes ..')
             await resendOtp({mobile})
             setOtp('')
             setSeconds(10)
@@ -106,7 +105,7 @@ export function VerifyOtp () {
                     {OtpValidationErrMsg && <p className={styles.errorMessage}>{OtpValidationErrMsg}</p>}
                         <p className={styles.resendOtp} onClick={handleOtpResend}>
                             <span className={`${!seconds && styles.reqOtp}`}>Resend OTP</span>
-                        {seconds > 0 && <span> in {seconds} seconds</span> }
+                            {seconds > 0 && <span> in {seconds} seconds</span> }
                         </p>
                     <Button 
                         buttonText='Verify OTP'

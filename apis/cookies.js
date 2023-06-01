@@ -12,13 +12,13 @@ const securityObject = {
 const api = Cookies.withAttributes(securityObject)
 
 export const cookie = {
-    set userAuthToken(token) {
+    set taAuthToken(token) {
         api.set("authToken", token);
     },
-    get userAuthToken() {
+    get taAuthToken() {
         return api.get("authToken");
     },
-    removeUserAuthToken() {
+    removeTaAuthToken() {
         Cookies.remove("authToken");
     }
 };

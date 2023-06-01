@@ -11,6 +11,9 @@
     padding: 0.9rem 2rem 0.85rem 1.35rem;
     position: sticky;
     top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .logoAndTextWrapper{
     display: flex;
@@ -36,6 +39,9 @@
     position: relative;
     height: 1.8rem;
     width: 1.5rem;
+}
+.logo{
+    cursor: pointer;
 }
 
 @media screen and (min-width:1024px) {

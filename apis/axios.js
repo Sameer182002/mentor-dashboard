@@ -11,7 +11,7 @@ function getAxios() {
         // console.log('onRequestFulfilled', request)
         // Do something before request is sent
         request.headers['source'] = 'prepaid-lab'
-        const authToken = cookie.userAuthToken;
+        const authToken = cookie.taAuthToken;
         if (authToken) request.headers["x-auth-token"] = authToken;
 
         return request;
@@ -34,8 +34,8 @@ function getAxios() {
             config: { url },
         } = response || {data:{}, config:{}};
 
-        if (url === '/student/verify-otp') {
-            cookie.userAuthToken = token
+        if (url === '/ta/verify-otp') {
+            cookie.taAuthToken = token
         }
 
         if (!status) {
@@ -50,13 +50,13 @@ function getAxios() {
         // Do something with response error
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // console.error('onResponseRejected', error.response)
-        const {msg, code} = error?.response?.data || {}
+        const {msg, code ,message} = error?.response?.data || {}
         if (code === "logout") {
-            cookie.removeUserAuthToken()
+            cookie.taAuthToken()
             // TODO: save logout reason and show on login page
         }
 
-        return Promise.reject(new Error(msg));
+        return Promise.reject(new Error(msg||message));
     }
 
 

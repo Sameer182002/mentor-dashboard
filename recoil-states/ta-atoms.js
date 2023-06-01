@@ -15,10 +15,10 @@ const syncleadMobileNumberAtom = key => ({ setSelf, trigger, onSet }) => {
 export const mobileNumberAtom = atom({
     key: 'mobileNumber',
     default: '',
-    effects: [syncleadMobileNumberAtom('userMobileNumber')]
+    effects: [syncleadMobileNumberAtom('mobileNumber')]
 });
 
-const syncleadUserIdAtom = key => ({ setSelf, trigger, onSet }) => {
+const synctaUserIdAtom = key => ({ setSelf, trigger, onSet }) => {
     const savedValue = localStorage.getItem(key)
     if (trigger === "get") {
         setSelf(savedValue); 
@@ -29,8 +29,8 @@ const syncleadUserIdAtom = key => ({ setSelf, trigger, onSet }) => {
         : localStorage.setItem(key, newValue);
     });
 };
-export const userIdAtom = atom({
-    key: 'userId',
+export const taIdAtom = atom({
+    key: 'taTd',
     default: '',
-    effects:[syncleadUserIdAtom('userId')]
+    effects:[synctaUserIdAtom('taId')]
   });

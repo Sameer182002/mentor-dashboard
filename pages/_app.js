@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     function loadPage() {
-      const authToken = cookie.userAuthToken;
+      const authToken = cookie.taAuthToken;
       const redirectTo = getRedirectedTo(authToken, pathname);
       if (redirectTo === pathname) {
           setIsLoading(false);
