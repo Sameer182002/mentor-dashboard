@@ -7,7 +7,7 @@ const securityObject = {
     sameSite: 'strict', //to control whether the browser is sending a cookie along with cross-site requests
     // path: '', // indicating the path where the cookie is visible.
     // domain :'' , // indicating a valid domain where the cookie should be visible. The cookie will also be visible to all subdomains.
-    // expires: 2
+    expires: 2
 }
 const api = Cookies.withAttributes(securityObject)
 
