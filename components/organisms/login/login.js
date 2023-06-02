@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import { mobileNumberAtom , taIdAtom} from '../../../recoil-states/ta-atoms';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingAtom } from '../../../recoil-states/ui-atoms';
-import { deviceRequirementMessage } from '../../../utils/constants';
+import { deviceRequirementMessage ,errorMessages} from '../../../utils/constants';
 
 
 
@@ -36,14 +36,14 @@ export function Login() {
             if(isLoading) return
             setIsLoading(true)
             if(mobile?.length !== 10){
-                throw new Error("Mobile number should be of 10 digits")
+                throw new Error(errorMessages?.invalidMobile)
             }
             const response = await getLoginOtp({mobile})
             setTaId(response?._id)
             router.push('/verify-otp')
         }
         catch(error){
-            setMobileValidationErrMsg(error?.message || 'please try again later.')
+            setMobileValidationErrMsg(error?.message || errorMessages?.serverError)
         }
         finally{
             setIsLoading(false)
@@ -59,9 +59,8 @@ export function Login() {
                         <h1 className={styles.contentHead}>Login to continue</h1>
                         <div className={styles.numberInput}>
                             <Image src={whatsapp} alt="whatsapp" />
-                            <div style={{ fontSize: "16px", marginLeft: "10px", marginRight: "10px" }}>+91 -</div>
+                            <div className={styles.mobileContainer}>+91 -</div>
                             <input
-                                style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}
                                 type="tel"
                                 value={mobile}
                                 placeholder="Enter Whatsapp Number"

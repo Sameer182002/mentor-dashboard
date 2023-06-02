@@ -38,7 +38,7 @@ export function Header (){
                 <div className={styles.spacer} />
                 <div>
                     <h1 className={styles.heading}>FunctionUp</h1>
-                    <h1 className={styles.bootcamp}>Placement Bootcamp</h1>
+                    {/* <h1 className={styles.bootcamp}>Placement Bootcamp</h1> */}
                 </div>
             </div>
            </div>

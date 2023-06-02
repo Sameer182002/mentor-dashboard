@@ -58,6 +58,9 @@
         box-sizing: "unset";
          width: "50%" ;
          font-size: 0.75rem;
+         border-width: 0 ;
+         box-sizing: unset ;
+         width: 50%
     }
 
     .errorMessage{
@@ -81,7 +84,11 @@
     .deviceMessage{
         display: none;
     }
+    .mobileContainer {
+        font-size: 0.8rem ;
+        margin-left: 0.5rem ;
+        margin-right: 0.5rem 
+    }
 
-/* deviceReqMsg */
 
 }

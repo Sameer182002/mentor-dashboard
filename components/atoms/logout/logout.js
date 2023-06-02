@@ -40,7 +40,7 @@ export function Logout () {
                     objectFit='fill'
                 />
             </picture>
-            <span>jaGdish shinde </span>
+            {/* <span></span> */}
            { isDropdownOpen && <Getdropdown handleLogout = {handleLogout}/>}
         </div>
     )

@@ -7,7 +7,7 @@ import { taIdAtom } from '../../../recoil-states/ta-atoms'
 import { useRecoilValue } from 'recoil'
 import { mobileNumberAtom } from '../../../recoil-states/ta-atoms'
 import { useRouter } from 'next/router'
-import { deviceRequirementMessage } from '../../../utils/constants'
+import { deviceRequirementMessage , errorMessages} from '../../../utils/constants'
 
 
 export function VerifyOtp () {
@@ -54,7 +54,7 @@ export function VerifyOtp () {
 
         try{
             if(otp.length !== 4){
-                throw new Error('OTP number should be of 4 digits')
+                throw new Error(errorMessages?.invalidOtp)
             }
             await verifyOtp({
                 otp,
