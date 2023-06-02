@@ -1,0 +1,16 @@
+@media screen and (min-width : 1024px) {
+
+    .buttonStyle {
+        outline: none ;
+        border: none;
+        background-color: var(--global-primary-color-one);
+        height: 2.4rem;
+        width: 7rem;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        line-height: 0.9rem;
+    }
+    
+}
