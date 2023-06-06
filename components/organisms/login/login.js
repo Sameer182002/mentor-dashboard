@@ -1,6 +1,4 @@
 import styles from './login.module.css';
-import whatsapp from '../../../public/svgs/whatsapp.svg'
-import Image from 'next/image'
 import { Fragment, useState } from 'react';
 import { isValidMobileNumber } from '../../../utils/helper';
 import { Button } from '../../atoms';
@@ -10,7 +8,7 @@ import { mobileNumberAtom , taIdAtom} from '../../../recoil-states/ta-atoms';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingAtom } from '../../../recoil-states/ui-atoms';
 import { deviceRequirementMessage ,errorMessages} from '../../../utils/constants';
-
+import PhonelinkRingTwoToneIcon from '@mui/icons-material/PhonelinkRingTwoTone';
 
 
 export function Login() {
@@ -58,12 +56,12 @@ export function Login() {
                     <div className={styles.logInBox}>
                         <h1 className={styles.contentHead}>Login to continue</h1>
                         <div className={styles.numberInput}>
-                            <Image src={whatsapp} alt="whatsapp" />
+                            <PhonelinkRingTwoToneIcon fontSize='small'/>
                             <div className={styles.mobileContainer}>+91 -</div>
                             <input
                                 type="tel"
                                 value={mobile}
-                                placeholder="Enter Whatsapp Number"
+                                placeholder="Enter Mobile Number"
                                 className={styles.input}
                                 onChange={handleChangeMobile}
                             />

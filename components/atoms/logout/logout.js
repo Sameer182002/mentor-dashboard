@@ -3,9 +3,12 @@ import style from './logout.module.css'
 import { defaultUser } from '../../../public/svgs'
 import { useState } from 'react'
 import {cookie} from '../../../apis/cookies'
+import { taFullNameAtom } from '../../../recoil-states/ta-atoms'
+import { useRecoilValue } from 'recoil'
 
 export function Logout () {
     const [isDropdownOpen , setIsDropdownOpen] = useState(false)
+    const fullName = useRecoilValue(taFullNameAtom)
 
     function handleLogout ( ) {
         cookie.removeTaAuthToken()
@@ -40,7 +43,7 @@ export function Logout () {
                     objectFit='fill'
                 />
             </picture>
-            {/* <span></span> */}
+            <span>{fullName || ''}</span>
            { isDropdownOpen && <Getdropdown handleLogout = {handleLogout}/>}
         </div>
     )

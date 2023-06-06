@@ -1,0 +1,90 @@
+@media screen and (min-width:1024px) {
+    .table{
+        display: block;
+        background: #FFFFFF;
+        border: 1px solid #EFEFF0;
+        box-shadow: 0px 3px 3px rgba(200, 202, 204, 0.1);
+        border-radius: 12px;
+        padding: 0.7rem;
+        /* min-height: calc(240rem/20); */
+        max-height: calc(240rem/20);
+        overflow: auto;
+        padding-top: 0;
+    }
+    .table::-webkit-scrollbar {
+        width: 6px;
+    }
+    .table::-webkit-scrollbar-thumb {
+        background-color: #DDE2E8;
+    }
+    .commonStyle {
+        font-size: 0.6rem;
+        line-height: 0.7rem;
+        display: flex;
+        align-content: flex-start;
+        gap: 2rem;
+    }
+    .tableHead{
+        composes : commonStyle ;
+        background-color:#F5FAFF;
+        color: rgba(114, 120, 136, 1);
+        border-radius: 5px;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+        position: sticky;
+        top: 0;    
+    }
+    .tableHead span {
+        flex: 1;
+    }
+    .tableHead span:last-child{
+        /* flex: 0.5; */
+    }
+
+    .tableRow{
+        composes : commonStyle  ;
+        padding:0 0.7rem ;
+        border-bottom: 0.5px solid #DFE9EF ;
+        font-size: calc(16rem/24);
+        line-height: calc(20rem/24);
+        color: rgba(29, 37, 45, 1);
+        font-weight: 500;
+    } 
+    .tableRow span {
+        padding: 0.7rem 0;
+        flex: 1;
+    }
+    .tableRow:last-child{
+        border-bottom: none;
+    }
+    .tableRow span:last-child{
+        /* flex: 0.5; */
+        cursor: pointer;
+    }
+    .table strong {
+        height: 0.7rem;
+        display: block;
+    }
+    .viewBtn{
+        flex: 1;
+        display:flex ;
+        align-items: center;
+        justify-content: center;
+    }
+    .viewBtn button {
+        display: block;
+        height: 1.25rem;
+        width: 4rem !important;
+        background: #E8F3FF;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 400;
+    }
+    
+}

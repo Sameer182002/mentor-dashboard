@@ -1,0 +1,99 @@
+.deviceMessage{
+    composes : deviceReqMsg from '../../../styles/common.module.css'
+}
+.wrapper{
+    display: none;
+}
+@media screen and (min-width: 1024px) {
+
+    .wrapper {
+        display: block;
+        padding-top: calc(50rem/20);
+        height: calc(100vh - 3.5rem);
+        padding-bottom: 7rem;
+    }
+    .wrapper h3{
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        font-weight: 700;
+        margin-bottom: calc(21rem/20);
+    }
+    .selectWrapper span {
+        font-size: 0.7rem ;
+        line-height: 0.6rem;
+    }
+    .selectWrapper{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .questionWrapper{
+        margin-top: 1rem;
+        margin-right: 7.5rem;
+        max-height : 100%;
+        overflow: auto;
+        padding-right: 0.5rem;
+    }
+    .questionWrapper::-webkit-scrollbar {
+        width: 6px;
+    }
+    .questionWrapper::-webkit-scrollbar-thumb {
+        background-color: #C8CACC;
+    }
+    .question{
+        padding: 1rem 0.65rem 1rem 1rem;
+        background: #FFFFFF;
+        border: 1px solid #C8CACC;
+        border-radius: 12px;
+        margin-bottom: 1.6rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+    .question:hover{
+        background-color: #F5FAFF;
+        border: none;
+    }
+    .question p {
+        font-size: 0.7rem;
+        line-height: 0.85rem;
+        font-weight: 400;
+        margin-bottom: 1.15rem;
+    }
+    .submissionDetail{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+    .submissionDetail div {
+        font-size: 0.6rem;
+        line-height: 0.7rem;
+        font-weight: 400;
+        color: rgba(114, 120, 136, 1);
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+    .submissionDetail div span {
+        /* display: block; */
+        word-break: break-all;
+    }
+    .submissionDetail div span:last-child{
+        color: var(--global-primary-color-three) ;
+        padding-left: 0.2rem;
+    }
+    .noQuesToCheckMsg{
+        padding-top: 2rem;
+        font-size: 0.8rem;
+        width: 80%;
+        line-height: 1rem;
+    }
+    .noQuesToCheckMsg span {
+        font-weight: 600;
+    }
+    .deviceMessage{
+        display: none;
+    }
+
+    
+}

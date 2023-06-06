@@ -1,0 +1,128 @@
+.wrapper{
+    display: none;
+}
+.deviceMessage{
+    composes : deviceReqMsg from '../../../styles/common.module.css'
+}
+@media screen and (min-width: 1024px) {
+    .wrapper{
+        display: block;
+        padding-top: 1.2rem;
+    }
+    .wrapper h4 {
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        font-weight: 600;
+        margin-top: 1.6rem;
+    }
+    .submissionData{
+        margin-top: 0.6rem;
+        color: rgba(147, 149, 153, 1);
+        font-size: 0.7rem;
+        line-height: 0.85rem;
+        display: flex;
+        gap: 3rem;
+    }
+    .questionText{
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        margin-bottom: 0.6rem;
+        margin-top: calc(42rem/20);
+    }
+    .dataSet{
+        font-size: 0.8rem;
+        line-height: 0.9rem;
+        font-weight: 400;
+    }
+    .dataSet span:last-child{
+        color: rgba(26, 53, 200, 1);
+    }
+    .examples{
+        padding: 1.9rem 0;
+    }
+    .example {
+        margin-bottom: 0.9rem;
+    }
+    .example h6 {
+        font-size: 0.7rem;
+        line-height: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    .example picture {
+        display: block;
+        width: calc(740rem/20);
+        height: calc(174rem/20);
+        background: #FFFFFF;
+        border: 1px solid #C8CACC;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+    }
+    .example a {
+        color: blue;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    .ansData{
+        margin-bottom: 1.5rem;
+    }
+    .ansData h6 {
+        font-size: 0.7rem;
+        line-height: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+    .ansData textarea {
+        display: block;
+        width: calc(740rem/20);
+        height: calc(117rem/20);
+        resize: none;
+        background: #FFFFFF;
+        border: 1px solid #C8CACC;
+        border-radius: 12px;
+        padding: 0.8rem;
+        
+    }
+    .linkInput{
+        padding-left: 1rem;
+        border: none;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    .linkInput:focus {
+        outline: none; 
+      }
+    .linkPicker{
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0 0.75rem;
+        height: 2.4rem;
+        width: 22.5rem ;
+        border-radius: 12px;
+        background-color: #FFFFFF;
+        border: 1px solid #C8CACC;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .noSubmissionMsg{
+        height: calc(100vh - 3.5rem);
+        width: 80%;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .submissionData div span:last-child{
+        color: var(--global-primary-color-three)
+    }
+    .deviceMessage{
+        display: none;
+    }
+
+    
+}

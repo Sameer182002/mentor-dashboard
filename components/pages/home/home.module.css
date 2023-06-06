@@ -1,10 +1,19 @@
+.cpmponentWrapper{
+    display: none;
+}
+.deviceMessage{
+    composes : deviceReqMsg from '../../../styles/common.module.css'
+}
 @media screen and (min-width : 1024px){
 
     .wrapper{
         height: calc(100vh - 3.5rem);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    }
+    .cpmponentWrapper{
+        display: unset;
+    }
+    .deviceMessage{
+        display: none;
     }
     
 }

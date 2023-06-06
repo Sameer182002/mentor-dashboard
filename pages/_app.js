@@ -27,6 +27,8 @@ function MyApp({ Component, pageProps }) {
 
   const {isReady,pathname,push} = useRouter()
 
+  const getLayout = Component.getLayout || ((page) => page)
+
   useEffect(() => {
     function loadPage() {
       const authToken = cookie.taAuthToken;
@@ -57,12 +59,14 @@ function MyApp({ Component, pageProps }) {
           /> */}
           <title>FunctionUp - Mentor&apos;s dashboard</title>
       </Head>
-
-      <Fragment>
-          <Component {...pageProps} />
-          <ToastContainer />
-      </Fragment>
-
+    {    
+      getLayout(
+        <Fragment>
+            <Component {...pageProps} />
+            <ToastContainer />
+        </Fragment>
+      )
+    }
     </RecoilRoot>
   )
 }
