@@ -41,6 +41,7 @@ export function Logout () {
                     width={'100%'}
                     layout='fill'
                     objectFit='fill'
+                    alt='default user picture'
                 />
             </picture>
             <span>{fullName || ''}</span>

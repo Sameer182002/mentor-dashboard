@@ -17,8 +17,8 @@ export function Select ({
         >
             <option disabled selected>Assignments</option>
             {
-                data.map(data => 
-                    <option value={data?.[valueKey]}>
+                data.map((data,index) => 
+                    <option value={data?.[valueKey]} key={index}>
                         {data?.[textKey]}
                     </option>
                 )

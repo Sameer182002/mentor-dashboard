@@ -119,12 +119,13 @@ export function UncheckedQuestionsDetails(){
             }
             <div className={style.questionWrapper}>
                { 
-                 uncheckedQuestions.map(question => (
+                 uncheckedQuestions.map((question,index) => (
                     <div 
                         className={style.question} 
                         onClick={
                             ()=>handleCheckQuestion(question)
                         }
+                        key={index}
                     >
                         <p>{question?.question}</p>
                         <div className={style.submissionDetail}>

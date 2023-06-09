@@ -45,7 +45,7 @@ export function Table ({
                             <div className={`${style.tableRow} ${rowstyle}`} key={index}>
                                 {                                    
                                     keys.map((key,index) => (
-                                        <Fragment>
+                                        <Fragment key={index}>
                                             {
                                                 index+1 === keys?.length && isAction && isButton ?
                                                 <div 

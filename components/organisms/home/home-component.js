@@ -51,7 +51,7 @@ export function HomeComponent() {
                 </span>
             </h5>
 
-            <p>All submitted questions for an assignment must be checked for the assignment to be considered "checked" .</p>
+            <p>All submitted questions for an assignment must be checked for the assignment to be considered checked .</p>
             <Table 
                 headingsdata={checkedAssgTableTitle}
                 data={checkedAssgData}
