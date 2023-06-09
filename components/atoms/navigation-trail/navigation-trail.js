@@ -28,6 +28,7 @@ export function NavigationTrail({currentAssignment}) {
                         <div 
                             className={style.pathHolder} 
                             onClick={()=>handleRedirect(path?.path)}
+                            key={index}
                         >
                             <p>{path?.text}</p>
                             {index+1 !== paths.length && <p>&#62;</p>}

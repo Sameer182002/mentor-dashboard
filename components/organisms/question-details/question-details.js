@@ -107,8 +107,8 @@ export function QuestionDetailsComponent () {
             <p className={style.questionText}>Question : {question}</p>
             <div className={style.examples}>
                 {
-                    metadata.map(data => (
-                        <div className={style.example}>
+                    metadata.map((data,index) => (
+                        <div className={style.example} key = {index}>
                             <h6>{data?.name}</h6>
                             <Fragment>
                                 {
