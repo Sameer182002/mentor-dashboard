@@ -1,3 +1,5 @@
 export {Login} from './login/login'
 export {VerifyOtp} from './verify-otp/verify-otp'
 export {Home} from './home/home'
+export { UncheckedQuestions } from './unchecked-questions/unchecked-questions'
+export { QuestionDetails } from './question-detail/question-detail'

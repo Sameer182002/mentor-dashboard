@@ -1,3 +1,7 @@
 export {getLoginOtp} from './mentor/get-login-otp'
 export {verifyOtp} from './mentor/verify-otp'
 export {resendOtp} from './mentor/resend-otp'
+export { getAssignments } from './assignments/get-assignments'
+export { getUncheckedQuestions } from './assignments/get-unchecked-questions'
+export { getSubmission } from './assignments/get-submission'
+export { checkSubmission } from './assignments/check-submission'

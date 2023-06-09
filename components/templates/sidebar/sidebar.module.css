@@ -1,0 +1,81 @@
+.iconHolder{
+    display: none;
+}
+@media screen and (min-width:1024px) {
+    .container{
+         background-color: #EFEFF0 ;
+        display: flex;
+    }
+    .sidebar{
+        grid-template-rows: 70px 1fr;
+        max-height: 100vh;
+        /* overflow: hidden; */
+    }
+    .iconHolder{
+        background-color: #F1F6FA;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: fit-content;
+        width: fit-content;
+        padding: 0.2rem;
+        position: absolute;
+        right: 1rem;
+    }
+    .documentIcon{
+        color : #1A35C8 ;
+        cursor: pointer;
+    }
+    .leftSec{
+        height: calc(100vh - 3.5rem);
+        background: #FFFFFF;
+        box-shadow: 0px 4px 14px rgba(33, 35, 37, 0.05);
+        padding: 0.9rem 1.05rem 0.9rem 0.9rem;
+        transition: margin-left 0.6s ease;
+        min-width: 14rem;
+        position: relative;
+        margin-left: -10.5rem;
+        margin-right: 6.6rem;
+        position: sticky ;
+        top: 3.5rem;
+    }
+    .expandedLeftSec{
+        margin-left: 0;
+        min-width: 14rem ;
+        margin-right: 2.05rem;
+    }
+    .options {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #444;
+        color: white;
+    }
+    .option{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color : #1A35C8 ;
+        cursor: pointer;
+        font-size: 0.8rem;
+        line-height: 1rem;
+        font-weight: 700;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .closeIcon{
+        /* color:  #1A35C8  */
+    }
+    .closeIconHolder{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end ;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        cursor: pointer;
+        border-bottom: 0.5px solid lightGray;
+    }
+    .rightSec{
+        width: 100%;
+    }
+}

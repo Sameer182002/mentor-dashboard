@@ -1,0 +1,22 @@
+@media screen and (min-width:1024px) {
+    .navigationTrail{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .pathHolder{
+        font-size: 0.6rem;
+        line-height: 0.7rem;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        cursor: pointer;
+    }
+    .pathHolder p {
+        color: blue;
+    }
+    .pathHolder p:last-child{
+        color: black;
+    }
+    
+}

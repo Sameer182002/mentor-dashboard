@@ -1,0 +1,16 @@
+@media screen and (min-width: 1024px) {
+    .wrapper{
+        height: calc(100vh - 3.5rem);
+        padding-top: 2.5rem;
+        margin-right: 7.5rem;
+    }
+    .headSkelStyle{
+        width: 20rem;
+        margin-bottom: 1.05rem;
+    }
+    .questionSkelStyle{
+        border-radius: 12px !important;
+        margin-bottom: 2rem;
+    }
+    
+}

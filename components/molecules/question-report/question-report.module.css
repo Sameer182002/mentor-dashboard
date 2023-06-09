@@ -1,0 +1,94 @@
+@media screen and (min-width: 1024px) {
+
+    .container{
+        padding: calc(21rem/20) 1.8rem 0.7rem 1.7rem;
+        background: #FFFFFF;
+        border: 1px solid #C8CACC;
+        border-radius: 12px;
+        width: calc(740rem/20);
+        min-height: calc(334rem/20);
+        margin-bottom: calc(86rem/20);
+    }
+    .container span {
+        font-size: 0.8rem;
+        line-height: 1rem;
+        margin: 0;
+        font-weight: 600;
+    }
+    .commonFontStyle {
+        font-size: 0.7rem;
+        line-height: 0.85rem;
+        font-weight: 400;
+    }
+    .status {
+        margin-top: calc(15rem/20);
+        margin-bottom: 0.3rem;
+        composes : commonFontStyle ;
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .status div {
+        background-color: rgba(255, 89, 50, 1);
+        color: #FFFFFF;
+        font-weight: 600;
+        border-radius: 4px;
+        font-size: 0.5rem;
+        height: 1.1rem;
+        width: 4rem ;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .marksHolder{
+        composes : commonFontStyle ;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-end;
+        margin-bottom: 1.4rem;
+    }
+    .marksInput{
+        height: 1.4rem;
+        /* width: 1.4rem; */
+        /* width: auto; */
+        border: 0.75px solid rgba(240, 240, 240, 1);
+        letter-spacing: 2px;
+    }
+    .marksInput::placeholder {
+        text-align: center;
+      }
+    .totalMarks{
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    .feedbackHolder h5{
+        font-size: 0.7rem;
+        line-height: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.15rem;
+    }
+    .feedbackHolder textarea {
+        background-color: #F5FAFF;
+        padding: 0.75rem;
+        border-radius: 10px;
+        resize: none;
+        border: none;
+        outline: none;
+        width: 100%;
+        height: calc(98rem/20);
+        border: 0.5px solid lightgray
+    }
+    .submitBtn {
+        height: 2rem;
+        width: 5.25rem;
+        margin-top: calc(0.7rem);
+        font-size: 0.7rem;
+    }
+    .errorMsg{
+        color: var(--global-primary-color-one);
+        font-size: 0.7rem;
+        font-weight: 500;
+        padding-top: 0.3rem;
+    }
+
+}

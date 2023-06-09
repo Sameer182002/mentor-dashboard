@@ -3,8 +3,8 @@ import { Button } from '../../atoms'
 import styles from './verify-otp.module.css'
 import { isValidMobileNumber } from '../../../utils/helper'
 import { verifyOtp , resendOtp} from '../../../apis'
-import { taIdAtom } from '../../../recoil-states/ta-atoms'
-import { useRecoilValue } from 'recoil'
+import { taFullNameAtom, taIdAtom } from '../../../recoil-states/ta-atoms'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { mobileNumberAtom } from '../../../recoil-states/ta-atoms'
 import { useRouter } from 'next/router'
 import { deviceRequirementMessage , errorMessages} from '../../../utils/constants'
@@ -18,6 +18,8 @@ export function VerifyOtp () {
     const [isLoading , setIsLoading] = useState(true)
 
     const mobile = useRecoilValue(mobileNumberAtom)
+    const setFullName = useSetRecoilState(taFullNameAtom)
+
     const router = useRouter()
 
     useEffect(() => {
@@ -56,10 +58,11 @@ export function VerifyOtp () {
             if(otp.length !== 4){
                 throw new Error(errorMessages?.invalidOtp)
             }
-            await verifyOtp({
+            const taDetails = await verifyOtp({
                 otp,
                 taId
-            })   
+            }) || {}
+            setFullName(taDetails?.fullName)
             router.push('/')         
         }
         catch(error) {
@@ -92,8 +95,8 @@ export function VerifyOtp () {
             <div className={styles.parentWrapper}>
                 <div className={styles.otpSec}>
                     <div className={styles.logInBox}>
-                        <h1 className={styles.contentHead}>Verify Whatsapp Number</h1>
-                        <div style={{ fontSize: "16px", marginBottom: "20px" }}>We have sent an OTP on WhatsApp to verify Mobile {mobile}</div>
+                        <h1 className={styles.contentHead}>Verify Mobile Number</h1>
+                        <div style={{ fontSize: "16px", marginBottom: "20px" }}>We have sent an OTP to verify Mobile {mobile}</div>
                         <div className={styles.numberInput}>
                             <input
                                 style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}

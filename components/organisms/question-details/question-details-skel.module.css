@@ -1,0 +1,19 @@
+@media screen and (min-width: 1024px) {
+    .wrapper {
+        padding-top: 2.8rem;
+        margin-right: 7.5rem;
+    }
+    .headSkelStyle{
+        width: 20rem;
+    }
+    .subheadSkelStyle{
+        width: 20rem;
+        margin-top: 1rem;
+    }
+    .bodySkelStyle{
+        margin-top: 2rem;
+        border-radius: 12px !important;
+    }
+
+    
+}
