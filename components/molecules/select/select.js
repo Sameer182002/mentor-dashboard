@@ -15,7 +15,7 @@ export function Select ({
             }
             disabled = {data?.length < 2}
         >
-            <option disabled selected>Assignments</option>
+            <option disabled selected>Select Assignment</option>
             {
                 data.map((data,index) => 
                     <option value={data?.[valueKey]} key={index}>

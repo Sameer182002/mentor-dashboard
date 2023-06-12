@@ -8,8 +8,8 @@
     }
     .sidebar{
         grid-template-rows: 70px 1fr;
-        max-height: 100vh;
-        /* overflow: hidden; */
+        /* TODO to check this for any new pages added */
+        /* max-height: 100vh; */
     }
     .iconHolder{
         background-color: #F1F6FA;

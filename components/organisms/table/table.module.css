@@ -26,7 +26,7 @@
     }
     .tableHead{
         composes : commonStyle ;
-        background-color:#F5FAFF;
+        background-color:#eaf0f8;
         color: rgba(114, 120, 136, 1);
         border-radius: 5px;
         height: 2rem;

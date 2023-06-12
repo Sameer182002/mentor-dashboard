@@ -20,14 +20,14 @@ export const sidebarOptions = [
 
 export const checkedAssgTableTitle =  {
     'assignmentName' : 'Assignment Name',
-    'studentName' : 'Submmited By' ,
+    'studentName' : 'Submitted By' ,
     'cohort' : 'Cohort' ,
     'submittedQuestionsCount' : 'Question Submitted' ,
     'totalQuestionsCount' : 'Total Questions'
 } 
 export const unCheckedAssgTableTitle =  {
     'assignmentName' : 'Assignment Name',
-    'studentName' : 'Submmited By' ,
+    'studentName' : 'Submitted By' ,
     'cohort' : 'Cohort' ,
     'uncheckedQuestionsCount' : 'Unchecked questions' ,
     'checkedQuestionsCount' : 'Checked Questions' ,
