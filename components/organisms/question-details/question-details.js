@@ -38,7 +38,7 @@ export function QuestionDetailsComponent () {
 
             setQuestionData({
                 assignmentName : releasedContent?.name || '',
-                submittedBy : student?.firstName + student?.lastName,
+                submittedBy : student?.firstName + " " + student?.lastName,
                 submittedOn : getDateFromIsoString(createdAt),
                 topic : question?.subtopicId?.topic?.name ,
                 question : question?.title ,
@@ -48,7 +48,8 @@ export function QuestionDetailsComponent () {
                 solution,
                 marks : question?.marks ,
                 studentId : student?._id ,
-                submissionId : _id
+                submissionId : _id ,
+                questionDescription : question?.description
             })
         }
         catch(err){
@@ -74,7 +75,8 @@ export function QuestionDetailsComponent () {
         submissionType  = '',
         submittedBy  = '',
         submittedOn  = '',
-        submissionId = ''
+        submissionId = '' ,
+        questionDescription = ''
     } =  questionData || {}
 
     if( isLoading ) return <QuestionDetailsSkeleton/>
@@ -93,7 +95,7 @@ export function QuestionDetailsComponent () {
             <NavigationTrail 
                 currentAssignment={assignmentName}
             />
-            <h4>{assignmentName}</h4>
+            <h4>Question : {question}</h4>
             <div className={style.submissionData}>
                 <div>
                     <span>Submitted by : </span>
@@ -104,7 +106,7 @@ export function QuestionDetailsComponent () {
                     <span>{submittedOn}</span>
                 </div>
             </div>
-            <p className={style.questionText}>Question : {question}</p>
+            <p className={style.questionText}>Description : {questionDescription}</p>
             <div className={style.examples}>
                 {
                     metadata.map((data,index) => (

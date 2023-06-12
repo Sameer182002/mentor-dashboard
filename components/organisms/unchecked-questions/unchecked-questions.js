@@ -66,7 +66,7 @@ export function UncheckedQuestionsDetails(){
                 
                 uncheckedQuestionsData.push({
                     assignmentName : releasedContent?.name || '',
-                    submittedBy : student?.firstName + student?.lastName,
+                    submittedBy : student?.firstName + " " + student?.lastName,
                     submittedOn : getDateFromIsoString(createdAt),
                     topic : question?.subtopicId?.topic?.name || '' ,
                     question : question?.title  || '',
@@ -99,7 +99,7 @@ export function UncheckedQuestionsDetails(){
     return (
         <Fragment>
         <div className={style.wrapper}>
-            <h3>UnChecked Questions</h3>
+            <h3>Unchecked Questions</h3>
             <div className={style.selectWrapper}>
                 <span>Filter by assignments :</span>
                 <Select 
