@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil'
 import '../styles/globals.css'
 import { useRouter } from 'next/router'
 import {cookie} from '../apis/cookies'
+import 'react-toastify/dist/ReactToastify.css';
 
 function getRedirectedTo(authToken, pathname) {
   const loginRoutes = ['/login', '/verify-otp']

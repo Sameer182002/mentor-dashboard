@@ -1,0 +1,100 @@
+@media screen and (min-width: 1024px) {
+  .tableRow {
+    display: flex;
+    gap: 2rem;
+    border-radius: 5px;
+    padding: 0.8rem;
+    background-color: #f6f8fb;
+    margin: 0.8rem 0;
+  }
+  .tableRow div {
+    flex: 0.5;
+  }
+  .tableRow div:last-child {
+    flex: 1.3;
+  }
+  .date {
+    color: #1d252d;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0.4rem;
+  }
+
+  .slots {
+    color: #515050;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .borderBottom {
+    border-bottom: 1px solid #dfe9ef;
+  }
+
+  .dateRangeDetail {
+    display: flex;
+    color: #1d252d;
+    font-family: Inter;
+    font-size: calc(10rem / 20);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    align-items: center;
+  }
+
+  .dateValueDetail {
+    display: inline-flex;
+    padding: 0.3rem 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 19, 120, 0.15);
+    background: #fff;
+    color: #1d252d;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .dash {
+    margin: 0 0.45rem;
+    color: #1d252d;
+    font-family: Inter;
+    font-size: 0.7rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .sessionInfo {
+    color: #ff2231;
+    font-family: Inter;
+    font-size: 0.45rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 0.35rem;
+    width: max-content;
+  }
+  .slots {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .addSlots{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.45rem;
+  }
+  .addBtn{
+    cursor: pointer;
+  }
+}
