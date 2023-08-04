@@ -1,0 +1,22 @@
+@media screen and (min-width: 1024px) {
+    .textWrapper{
+        display: flex;
+    }
+    .textStyle{
+        color: #515050;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        cursor: pointer;
+    }
+    .textWrapper :nth-child(1){
+        text-align: left;
+        width: 50%;
+        padding-left: 0.6rem;
+    }
+    .textWrapper :nth-child(2){
+        width: 50%;
+    }
+}

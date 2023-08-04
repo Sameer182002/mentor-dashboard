@@ -139,3 +139,22 @@ export const  convertTimeToTimestamp = (inputTime, date) => {
 }
  
   
+export function getFormattedDate(timestamp) {
+    const dateObj = new Date(timestamp);
+    const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+    const day = ('0' + dateObj.getDate()).slice(-2);
+    const year = dateObj.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate
+}
+
+export function getTimeWithAmPm(timestamp){
+    const dateObj = new Date(timestamp);
+    const hours = dateObj.getHours();
+    const minutes = ('0' + dateObj.getMinutes()).slice(-2);
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+    const formattedTime = `${formattedHours}:${minutes} ${ampm}`;
+    return formattedTime
+}
+

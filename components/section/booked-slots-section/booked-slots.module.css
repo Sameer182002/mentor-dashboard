@@ -1,0 +1,8 @@
+@media screen and (min-width: 1024px) {
+    .bookedSlotsWrapper{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+        margin-top: 2.8rem;
+        gap:1rem;
+    }
+}

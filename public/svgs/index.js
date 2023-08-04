@@ -6,15 +6,18 @@ import highlightedAssignment from './highlightedAssignment.svg'
 import assignmentIcon from './assignmentIcon.svg'
 import calenderIcon from './calender.svg'
 import highlightedCalenderIcon from './highlightedCalender.svg'
-
+import highlightedSubmissionVector from './highlightedSubmissionVector.svg'
+import submissionVector from './submissionVector.svg'
 
 export {
     defaultUser,
     deleteIcon,
     addIcon,
     dropdownIcon,
-    highlightedAssignment,
     assignmentIcon,
     calenderIcon,
-    highlightedCalenderIcon
+    highlightedCalenderIcon,
+    submissionVector,
+    highlightedSubmissionVector,
+    highlightedAssignment
 }

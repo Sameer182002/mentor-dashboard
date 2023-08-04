@@ -1,0 +1,45 @@
+.mainWrapper{
+    display: none;
+}
+.deviceMessage{
+    composes : deviceReqMsg from "../../../styles/common.module.css"
+}
+@media screen and (min-width: 1024px) {
+    .mainWrapper{
+        padding-top: 2.6rem;
+        font-family: Inter;
+        padding-right: 3rem;
+        height: 100%;
+        position: relative;
+        padding-bottom: 2rem;
+        display: block;
+    }
+    .mainWrapper h2{
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .subHeading{
+        color: #515050;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 0.85rem;
+    }
+    .bookedSlotsWrapper{
+        margin-top: 2.75rem;
+    }
+    .noSessionText{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 85%;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+    .deviceMessage{
+        display: none;
+    }
+}
