@@ -1,7 +1,22 @@
 .iconHolder{
     display: none;
 }
+.wrapper{
+    display: none;
+}
+.deviceMessage{
+    composes : deviceReqMsg from '../../../styles/common.module.css';
+}
 @media screen and (min-width:1024px) {
+    .mobileViewWrapper{
+        display: none;
+    }
+    .wrapper{
+        display: block;
+    }
+    .deviceMessage{
+        display: none;
+    }
     .container{
          background-color: #EFEFF0 ;
         display: flex;
@@ -20,12 +35,13 @@
         height: fit-content;
         width: fit-content;
         padding: 0.2rem;
-        position: absolute;
         right: 1rem;
     }
     .documentIcon{
         color : #1A35C8 ;
         cursor: pointer;
+        width: 1.6rem;
+        height: 1.6rem;
     }
     .leftSec{
         height: calc(100vh - 3.5rem);
@@ -54,14 +70,24 @@
     .option{
         display: flex;
         align-items: center;
-        justify-content: center;
-        color : #1A35C8 ;
         cursor: pointer;
         font-size: 0.8rem;
         line-height: 1rem;
         font-weight: 700;
-        gap: 1rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+    .sidebarTitle{
+        margin-left: 1.2rem;
+        text-align: left;
+        width: 80%;
+    }
+    .highlightedTitle{
+        composes : sidebarTitle;
+        color : #1A35C8 ;
+    }
+    .iconImg{
+        width: 1rem;
+        height: 1.1rem;
     }
     .closeIcon{
         /* color:  #1A35C8  */
@@ -77,5 +103,18 @@
     }
     .rightSec{
         width: 100%;
+    }
+    .sidebarMenuIcons{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+        margin-top: 0.6rem;
+    }
+    .sidebarIcon{
+        border-radius: 20%;
+        margin-bottom: 0rem;
+        cursor: pointer;
     }
 }
