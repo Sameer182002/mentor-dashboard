@@ -7,6 +7,9 @@
 .deviceMessage{
     composes : deviceReqMsg from '../../../styles/common.module.css';
 }
+.leftSec{
+    display: none;
+}
 @media screen and (min-width:1024px) {
     .mobileViewWrapper{
         display: none;
@@ -55,6 +58,7 @@
         margin-right: 6.6rem;
         position: sticky ;
         top: 3.5rem;
+        display: unset;
     }
     .expandedLeftSec{
         margin-left: 0;
@@ -90,7 +94,6 @@
         height: 1.1rem;
     }
     .closeIcon{
-        /* color:  #1A35C8  */
     }
     .closeIconHolder{
         display: flex;

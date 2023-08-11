@@ -1,0 +1,66 @@
+@media screen and (min-width: 1024px) {
+    .slotDetailsWrapper{
+        background-color: var(--global-primary-color-four);
+        padding: 1rem;
+        width: 13.6rem;
+        height: 8.6rem;
+        border-radius: 5px;
+        border: 1px solid #EFEFF0;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        display: flex;
+        flex-direction: column;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .dateStyle{
+        color: #515050;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    .timeWrapper{
+        display: flex;
+        gap: 0.6rem;
+        padding-left: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .timeWrapper p{
+        padding: 0.3rem 0.8rem;
+        color: #1D252D;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 19, 120, 0.15);
+        background: #FFF;
+        cursor: pointer;
+    }
+    .timeWrapper p:hover{
+        background-color: rgb(247, 247, 247);
+    }
+    .timeWrapper h5{
+        align-self: center;
+        cursor: pointer;
+    }
+    .joinText{
+        color: #FF2231;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding-left: 0.6rem;
+        margin-top: 0.8rem;
+        cursor: pointer;
+    }
+    .joinText:hover{
+        color: #df222e;
+    }
+}

@@ -1,4 +1,4 @@
-import {assignmentIcon,highlightedAssignment, calenderIcon, highlightedCalenderIcon} from "../public/svgs"
+import {calenderIcon, highlightedCalenderIcon,highlightedSubmissionVector,submissionVector,assignmentIcon,highlightedAssignment} from "../public/svgs"
 export const invalidLogoutPaths = [
     '/login',
     '/verify-otp'
@@ -24,6 +24,12 @@ export const sidebarOptions = [
         path: '/meeting-calender',
         highlighted : highlightedCalenderIcon,
         unhighlighted : calenderIcon
+    },
+    {
+        title : 'Upcoming Sessions',
+        path: '/upcoming-sessions',
+        highlighted : highlightedSubmissionVector,
+        unhighlighted : submissionVector
     }
 ]
 
