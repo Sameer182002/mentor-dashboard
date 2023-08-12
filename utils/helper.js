@@ -158,3 +158,8 @@ export function getTimeWithAmPm(timestamp){
     return formattedTime
 }
 
+export function isTimeToJoinMeet(timestamp){
+    const presentTime = new Date().getTime();
+    const timeDifferenceInMinutes = (timestamp - presentTime) / (1000 * 60);
+    return timeDifferenceInMinutes <= 3
+}
