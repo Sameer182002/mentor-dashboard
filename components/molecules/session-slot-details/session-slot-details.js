@@ -1,9 +1,14 @@
+import { toast } from 'react-toastify'
 import { SlotText } from '../../atoms'
 import styles from './session-slot-details.module.css'
 
 export function BookedSlotDetails({data}){
-    const {name='',mobile='',date='',from='',to='',dyteMeetingLink=''} = data || {}
+    const {name='',mobile='',date='',from='',to='',dyteMeetingLink='',isTimeToJoinMeet} = data || {}
     function handleClick(link){
+        if(!isTimeToJoinMeet){
+            toast.error('Join on time !!')
+            return
+        }
         window.open(link,'_blank')
     }
     return (

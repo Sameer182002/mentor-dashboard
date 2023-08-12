@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getUpcomingbookedSessions } from "../../../apis"
 import { deviceRequirementMessage } from "../../../utils/constants"
-import { getFormattedDate, getTimeWithAmPm } from "../../../utils/helper"
+import { getFormattedDate, getTimeWithAmPm, isTimeToJoinMeet } from "../../../utils/helper"
 import { BookedSlots } from "../../section"
 import UpcomingSessionSkeleton from "./upcoming-session-skelton"
 import styles from "./upcoming-session.module.css"
@@ -30,7 +30,8 @@ export function UpcomingSession(){
                     mobile,dyteMeetingLink,
                     from : getTimeWithAmPm(from),
                     to : getTimeWithAmPm(to),
-                    date : getFormattedDate(date)
+                    date : getFormattedDate(date),
+                    isTimeToJoinMeet : isTimeToJoinMeet(from)
                 })
                 })
                 setBookedSessions(formattedData)
