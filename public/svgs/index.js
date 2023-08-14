@@ -8,6 +8,8 @@ import calenderIcon from './calender.svg'
 import highlightedCalenderIcon from './highlightedCalender.svg'
 import highlightedSubmissionVector from './highlightedSubmissionVector.svg'
 import submissionVector from './submissionVector.svg'
+import whatsappIcon from './whatsappIcon.svg'
+
 
 export {
     defaultUser,
@@ -19,5 +21,6 @@ export {
     highlightedCalenderIcon,
     submissionVector,
     highlightedSubmissionVector,
-    highlightedAssignment
+    highlightedAssignment,
+    whatsappIcon
 }

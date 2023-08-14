@@ -9,6 +9,8 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLoadingAtom } from '../../../recoil-states/ui-atoms';
 import { deviceRequirementMessage ,errorMessages} from '../../../utils/constants';
 import PhonelinkRingTwoToneIcon from '@mui/icons-material/PhonelinkRingTwoTone';
+import {whatsappIcon} from "../../../public/svgs/index"
+import Image from "next/image";
 
 
 export function Login() {
@@ -56,7 +58,8 @@ export function Login() {
                     <div className={styles.logInBox}>
                         <h1 className={styles.contentHead}>Login to continue</h1>
                         <div className={styles.numberInput}>
-                            <PhonelinkRingTwoToneIcon fontSize='small'/>
+                            {/* <PhonelinkRingTwoToneIcon fontSize='small'/> */}
+                            <Image src={whatsappIcon} className={styles.img}/>
                             <div className={styles.mobileContainer}>+91 -</div>
                             <input
                                 type="tel"
