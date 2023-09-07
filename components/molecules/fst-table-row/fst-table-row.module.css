@@ -1,0 +1,34 @@
+@media screen and (min-width:1024px) {
+    .tableHeader{
+        background-color: #F5FAFF;
+        display: flex;
+        padding: 0.5rem 0.8rem 0  0.8rem;
+        align-items: center;
+        border-radius: 6px;
+        align-items: center;
+    }
+    .tableHeader>p{
+        flex: 1;
+        text-transform: uppercase;
+        color: #727888;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.01rem;
+        text-transform: uppercase;
+    }
+    .tableHeader>p:nth-child(1){
+        flex: 1.3;
+    }
+    .tableHeader>p:nth-child(2){
+        flex: 1.3;
+    }
+    .tableHeader>p:nth-child(5){
+        text-align: center;
+    }
+    .tableHeader>p:nth-child(6){
+        text-align: center;
+    }
+}

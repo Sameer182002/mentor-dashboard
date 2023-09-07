@@ -1,23 +1,34 @@
 import style from './sidebar.module.css'
 import { Header } from '../../molecules'
 import DescriptionIcon from '@mui/icons-material/Description';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { deviceRequirementMessage, sidebarOptions } from '../../../utils/constants';
 import { useRouter } from 'next/router';
 import Image from 'next/image'
 import MenuIcon from '@mui/icons-material/Menu';
+
 export function Sidebar({children}) {
     const [expanded, setExpanded] = useState(false);
     const router = useRouter();
-
+    const [isLoading,setIsLoading] = useState(true);
+    const updatedSidebarOptions = sidebarOptions
     const toggleSidebar = (path) => {
       setExpanded(!expanded);
       if(path) handleClickRedirect(path);
     };
+
     const handleClickRedirect = (page) => {
         router.push(page)
     }
+
+    useEffect(()=>{
+        if(!router?.isReady) return
+        updatedSidebarOptions[3].isVisible = JSON.parse(localStorage.getItem("isFstEvaluator") || "false")
+        setIsLoading(false)
+     },[router?.isReady])
+    
+     if(isLoading) return null
     return (
         <Fragment>
         <main className={style.wrapper}>
@@ -30,7 +41,7 @@ export function Sidebar({children}) {
                             <div className={style.sidebarMenuIcons}>
                                 <MenuIcon className={style.sidebarIcon} sx={{fontSize:"1.2rem"}} onClick={toggleSidebar}/>
                                 {
-                                    sidebarOptions.map(({highlighted,unhighlighted,path},index) => (
+                                    updatedSidebarOptions.filter(option=>option?.isVisible).map(({highlighted,unhighlighted,path},index) => (
                                         <Image src={path == router.pathname ? highlighted : unhighlighted} onClick={()=>toggleSidebar(path)} className={style.documentIcon} key={index}/>
                                     ))
                                 }
@@ -47,7 +58,7 @@ export function Sidebar({children}) {
                             </div>
                             <div className="options">
                                 {
-                                    sidebarOptions.map(({title,path,highlighted,unhighlighted}, i) =>(
+                                    updatedSidebarOptions.filter(option=>option?.isVisible).map(({title,path,highlighted,unhighlighted}, i) =>(
                                         <div 
                                             className={style.option}
                                             key={title}

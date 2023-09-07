@@ -1,0 +1,28 @@
+@media screen and (min-width: 1024px) {
+    .mainWrapper{
+        padding: 1rem 7.5rem 1rem 0;
+    }
+    .naviagtion{
+        width: 6rem;
+        border-radius: 5px;
+    }
+    .navigationWrapper{
+        display: flex;
+        gap:1rem;
+    }
+    .heading{
+        width: 50%;
+        border-radius: 8px;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    .heading2{
+        width:50%;
+        border-radius: 6px;
+    }
+    .image{
+        width : 60%;
+        border-radius: 6px;
+        margin-top: 0.8rem;
+    }
+}

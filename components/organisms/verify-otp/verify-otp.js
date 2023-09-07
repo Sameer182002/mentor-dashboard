@@ -62,6 +62,12 @@ export function VerifyOtp () {
                 otp,
                 taId
             }) || {}
+            const {role=[]} = taDetails || {} 
+            if(role?.includes("fst-evaluator")){
+                localStorage.setItem("isFstEvaluator",true)
+            }else{
+                localStorage.setItem("isFstEvaluator",false)
+            }
             setFullName(taDetails?.fullName)
             router.push('/')         
         }

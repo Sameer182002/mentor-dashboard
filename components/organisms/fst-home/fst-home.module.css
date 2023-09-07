@@ -1,0 +1,59 @@
+
+@media screen and (min-width:1024px) {
+    .wrapper{
+        padding-top: calc(25rem/20);
+        width: 89%;
+    }
+    .wrapper h4 {
+        font-size: 1.4rem;
+        line-height: 1.65rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+    }
+    .tableHeading{
+        font-size: 1rem;
+        line-height: 1.2rem;
+        color: #1A35C8;
+        font-weight: 600;
+    }
+    .checkedAssg{
+        margin-bottom: 1.5rem;
+    }
+    .uncheckedAsg h5{
+        margin-bottom: 0.7rem;
+    }
+    .checkedAssg p {
+        font-size: 0.6rem;
+        line-height: 0.7rem;
+        font-weight: 400;
+        margin-bottom: 0.7rem;
+        margin-top: 0.25rem;
+        color: #515050;
+    }
+    .checkedCount {
+        font-size: 0.8rem;
+        line-height: 0.9rem;
+        font-weight: 700;
+        color: #21C17A;
+    }
+    .uncheckedCount {
+        font-size: 0.8rem;
+        line-height: 0.9rem;
+        font-weight: 700;
+        color: rgba(255, 34, 49, 1);
+    }
+    .uncheckedTableRowStyle span:nth-child(4),
+    .uncheckedTableRowStyle span:nth-child(5) {
+        flex: 0.6;
+    }
+    .uncheckedTableRowStyle span:nth-child(1){
+        flex: 1.5;
+    }
+    .uncheckedTableHeadStyle span:nth-child(4),
+    .uncheckedTableHeadStyle span:nth-child(5) {
+        flex: 0.6;
+    }
+    .uncheckedTableHeadStyle span:nth-child(1){
+        flex: 1.5;
+    }
+}

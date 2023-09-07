@@ -1,9 +1,9 @@
 import axios  from "axios";
 import { cookie } from "./cookies";
 
-function getAxios() {
+function getAxios(backendUrl) {
     const axiosInstance = axios.create({
-        baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+        baseURL: backendUrl || process.env.NEXT_PUBLIC_BASE_URL,
     });
 
 
@@ -73,3 +73,6 @@ if (!axiosInstance) {
 }
 
 export default axiosInstance
+export {
+    getAxios
+}
