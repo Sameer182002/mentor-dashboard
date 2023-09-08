@@ -1,0 +1,90 @@
+@media screen and (min-width: 1024px) {
+    .mainWrapper{
+        padding: 1rem 7.5rem 1rem 0;
+    }
+    .mainWrapper h2{
+        color: #1D252D;
+        font-family: Inter;
+        font-size: 1.2rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-bottom: 1rem;
+    }
+    .mainWrapper>h2>span{
+        color: #FF2231;
+        font-family: Inter;
+        font-size: 0.8rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+    }
+    .questionDetailsBox{
+        padding: 1rem 0.65rem 1rem 1rem;
+        background: #FFFFFF;
+        border: 1px solid #dbdcdc;
+        border-radius: 0.6rem;
+        margin-bottom: 1.6rem;
+        cursor: pointer;
+    }
+    .questionDetailsBox:hover{
+        background-color: rgb(245, 242, 242);
+    }
+    .questionDetailsBox>p{
+        color: #000;
+        font-family: Inter;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    .submissionDetails>p{
+        color: #727888;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        flex:1;
+    }
+    
+    .submissionDetails>p:nth-child(3){
+        flex:0.8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .submissionDetails>p:nth-child(4){
+        flex:0.8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .submissionDetails{
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .navigation{
+        display: flex;
+        gap:0.3rem;
+        color: #939599;
+        font-family: Inter;
+        font-size: 0.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 2rem;
+    }
+    .navigation>p:nth-child(1){
+        color: #1A35C8;
+        cursor: pointer;
+    }
+    .evaluationStatus{
+        text-align: end;
+        font-size: 0.7rem;
+        padding-right: 0.8rem;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+    }
+}

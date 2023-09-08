@@ -1,0 +1,16 @@
+@media screen and (min-width: 1024px) {
+    .headingSkeleton{
+        margin-right: 7.4rem;
+        width: 20rem;
+        margin-bottom: 0.8rem;
+    }
+    .tableSkeleton{
+        margin-right: 7.4rem;
+        border-radius: 12px !important;
+        margin-bottom: 1rem;
+    }
+    .skelWrapper{
+        height: calc(100vh - 3.5rem);
+        padding-top: 1.25rem;
+    }
+}

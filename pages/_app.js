@@ -9,9 +9,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function getRedirectedTo(authToken, pathname) {
   const loginRoutes = ['/login', '/verify-otp']
+  const fstEvaluatorPaths = ['/check-fst-assignment','/fst-assignment','/fst-question-details']
   if (authToken) {
     if (['/', ...loginRoutes].includes(pathname)) {
       return '/'
+    }
+    if(fstEvaluatorPaths.includes(pathname) && !JSON.parse(localStorage.getItem("isFstEvaluator") || "false")) {
+      return "/"
     }
     return pathname
   }

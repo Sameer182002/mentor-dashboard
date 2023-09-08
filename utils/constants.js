@@ -17,19 +17,29 @@ export const sidebarOptions = [
         title: 'Unchecked Questions',
         path: '/unchecked-questions',
         highlighted : highlightedAssignment,
-        unhighlighted : assignmentIcon
+        unhighlighted : assignmentIcon,
+        isVisible : true
     },
     {
         title : 'Meeting Calendar',
         path: '/meeting-calender',
         highlighted : highlightedCalenderIcon,
-        unhighlighted : calenderIcon
+        unhighlighted : calenderIcon,
+        isVisible : true
     },
     {
         title : 'Upcoming Sessions',
         path: '/upcoming-sessions',
         highlighted : highlightedSubmissionVector,
-        unhighlighted : submissionVector
+        unhighlighted : submissionVector,
+        isVisible : true
+    },
+    {
+        title : 'FST Assignment',
+        path: '/fst-assignment',
+        highlighted : highlightedAssignment,
+        unhighlighted : assignmentIcon,
+        isVisible : true
     }
 ]
 
@@ -40,6 +50,15 @@ export const checkedAssgTableTitle =  {
     'submittedQuestionsCount' : 'Question Submitted' ,
     'totalQuestionsCount' : 'Total Questions'
 } 
+
+export const fstCheckedAssgTableTitle = {
+    'assignmentName' : 'Assignment Name',
+    'studentName' : 'Submitted By' ,
+    'cohort' : 'Cohort' ,
+    'submittedQuestionsCount' : 'Question Submitted' ,
+    'totalQuestionsCount' : 'Total Questions',
+    'viewCheckedQuestions' : 'View Questions'
+}
 export const unCheckedAssgTableTitle =  {
     'assignmentName' : 'Assignment Name',
     'studentName' : 'Submitted By' ,

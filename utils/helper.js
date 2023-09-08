@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getAxios as createInstance } from "../apis/axios";
 import { DAYS_OF_WEEK, ONE_HOUR_IN_MS, ONE_MINUTE_IN_MS } from "./constants";
 
 export const isOnlyDigits = (text) => {
@@ -162,4 +163,10 @@ export function isTimeToJoinMeet(timestamp){
     const presentTime = new Date().getTime();
     const timeDifferenceInMinutes = (timestamp - presentTime) / (1000 * 60);
     return timeDifferenceInMinutes <= 3
+}
+
+export function getInstance () {
+    return createInstance(
+        process.env.NEXT_PUBLIC_FST_BACKEND_URL
+    )
 }
