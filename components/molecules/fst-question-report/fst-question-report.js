@@ -12,11 +12,10 @@ export function FstQuestionReport({
     errorMsg,
     setErrorMsg
 }){
-    const [feedback, setFeedback] = useState("")
-    const [marks,setMarks] = useState("")
-    
+    const [feedback, setFeedback] = useState(String(evaluationRemarks) || "")
+    const [marks,setMarks] = useState(String(marksAchieved) || "")
+
     function handleInput(key,value){
-        if(evaluationStatus == "checked") return
         setErrorMsg("")
         if(key == "feedback"){
             setFeedback(value)
@@ -45,20 +44,18 @@ export function FstQuestionReport({
                 <p>Marks :</p>
                 <input 
                     type={"text"} 
-                    disabled = {evaluationStatus =="checked" ? true : false}
                     placeholder={"_ _"} 
                     maxLength={String(questionMark).length == 1 ? 2 : String(questionMark).length}
                     onChange = {(e)=>handleInput("marks",e.target.value)}
-                    value={marksAchieved || marks}
+                    value={marks }
                 ></input>
                 <p>{`/${questionMark}`}</p>
             </div>
             <div className={styles.feedbackWrapper}>
                 <p>Feedback :</p>
                 <textarea 
-                    disabled = {evaluationStatus =="checked" ? true : false}
                     className={styles.feedbackInput} 
-                    value={evaluationRemarks || feedback}  
+                    value={ feedback}  
                     onChange={(e)=>handleInput("feedback",e.target.value)
                     
                 }
@@ -66,7 +63,7 @@ export function FstQuestionReport({
             </div>
             {errorMsg && <p className={styles.errorMsg}>{errorMsg}</p>}
             <Button 
-                customStyle={evaluationStatus=="checked" ? styles.disabledBtn : styles.submitBtn}
+                customStyle={styles.submitBtn}
                 buttonText='Submit'
                 onClickAction={()=>handleSubmit(feedback,marks,evaluationStatus)}
             />

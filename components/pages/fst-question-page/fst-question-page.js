@@ -94,9 +94,6 @@ export function FstQuestionView(){
 
     async function handleCheckingSumission(feedback,marks,status){
         try{
-            if(status=="checked"){
-                return
-            }
             if(!feedback?.trim()){
                 setErrorMsg('Please enter your feedback.')
                 return

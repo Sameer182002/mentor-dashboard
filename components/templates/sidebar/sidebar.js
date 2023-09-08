@@ -22,9 +22,24 @@ export function Sidebar({children}) {
         router.push(page)
     }
 
+    const pathMappingByTaRole = {
+        "fst-evaluator" : [3],
+        "prepaid-ta" : [0,1,2]
+    }
+    
+    function toDisableOptions(taRoles){
+        taRoles.forEach(role=>{
+            if(pathMappingByTaRole.hasOwnProperty(role)){
+                const indexes = pathMappingByTaRole[role]
+                indexes.map(idx => updatedSidebarOptions[idx].isVisible = true)
+            }
+        })
+    }
+
     useEffect(()=>{
         if(!router?.isReady) return
-        updatedSidebarOptions[3].isVisible = JSON.parse(localStorage.getItem("isFstEvaluator") || "false")
+        const rolesOfTa = JSON.parse(localStorage.getItem("taRoles") || "[]")
+        toDisableOptions(rolesOfTa);
         setIsLoading(false)
      },[router?.isReady])
     
@@ -41,8 +56,8 @@ export function Sidebar({children}) {
                             <div className={style.sidebarMenuIcons}>
                                 <MenuIcon className={style.sidebarIcon} sx={{fontSize:"1.2rem"}} onClick={toggleSidebar}/>
                                 {
-                                    updatedSidebarOptions.filter(option=>option?.isVisible).map(({highlighted,unhighlighted,path},index) => (
-                                        <Image src={path == router.pathname ? highlighted : unhighlighted} onClick={()=>toggleSidebar(path)} className={style.documentIcon} key={index}/>
+                                    updatedSidebarOptions.filter(option=>option?.isVisible).map(({highlighted,unhighlighted,path,highlightedPaths},index) => (
+                                        <Image src={highlightedPaths.includes(router?.pathname) ? highlighted : unhighlighted} onClick={()=>toggleSidebar(path)} className={style.documentIcon} key={index}/>
                                     ))
                                 }
                             </div>
@@ -58,7 +73,7 @@ export function Sidebar({children}) {
                             </div>
                             <div className="options">
                                 {
-                                    updatedSidebarOptions.filter(option=>option?.isVisible).map(({title,path,highlighted,unhighlighted}, i) =>(
+                                    updatedSidebarOptions.filter(option=>option?.isVisible).map(({title,path,highlighted,unhighlighted,highlightedPaths}, i) =>(
                                         <div 
                                             className={style.option}
                                             key={title}
@@ -66,8 +81,8 @@ export function Sidebar({children}) {
                                                 () => handleClickRedirect(path)
                                             }
                                         >   
-                                            <Image src={router?.pathname == path? highlighted :unhighlighted} className={style.iconImg}/>
-                                            <span className={router?.pathname == path ?style.highlightedTitle : style.sidebarTitle}>{title}</span>
+                                            <Image src={highlightedPaths.includes(router?.pathname)? highlighted :unhighlighted} className={style.iconImg}/>
+                                            <span className={highlightedPaths.includes(router?.pathname) ?style.highlightedTitle : style.sidebarTitle}>{title}</span>
                                         </div>
                                     ))
                                 }

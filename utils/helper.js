@@ -170,3 +170,8 @@ export function getInstance () {
         process.env.NEXT_PUBLIC_FST_BACKEND_URL
     )
 }
+
+export function truncateText(text,length){
+    if(!text) return ""
+    return text.length > length ? `${text.slice(0, length)}...` : text; 
+}
