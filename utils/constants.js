@@ -18,28 +18,32 @@ export const sidebarOptions = [
         path: '/unchecked-questions',
         highlighted : highlightedAssignment,
         unhighlighted : assignmentIcon,
-        isVisible : true
+        isVisible : false,
+        highlightedPaths : ['/unchecked-questions','/question-details']
     },
     {
         title : 'Meeting Calendar',
         path: '/meeting-calender',
         highlighted : highlightedCalenderIcon,
         unhighlighted : calenderIcon,
-        isVisible : true
+        isVisible : false,
+        highlightedPaths : ['/meeting-calender']
     },
     {
         title : 'Upcoming Sessions',
         path: '/upcoming-sessions',
         highlighted : highlightedSubmissionVector,
         unhighlighted : submissionVector,
-        isVisible : true
+        isVisible : false,
+        highlightedPaths : ['/upcoming-sessions']
     },
     {
         title : 'FST Assignment',
         path: '/fst-assignment',
         highlighted : highlightedAssignment,
         unhighlighted : assignmentIcon,
-        isVisible : true
+        isVisible : false,
+        highlightedPaths : ['/check-fst-assignment','/fst-assignment','/fst-question-details']
     }
 ]
 

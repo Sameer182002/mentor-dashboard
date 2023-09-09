@@ -1,4 +1,5 @@
 import { useRouter } from "next/router"
+import { truncateText } from "../../../utils/helper"
 import { FstTableRow } from "../fst-table-row/fst-table-row"
 import styles from "./unchecked-assignment-table.module.css"
 export function UncheckedAssignmentTable({data=[]}){
@@ -34,9 +35,9 @@ export function UncheckedAssignmentTable({data=[]}){
                 studentId=''
             },index)=>
                 <FstTableRow
-                    key1={assignmentName}
-                    key2={studentName}
-                    key3={cohort}
+                    key1={truncateText(assignmentName,20) || ""}
+                    key2={truncateText(studentName,14)|| ""}
+                    key3={truncateText(cohort,14)|| ""}
                     key4={uncheckedQuestionsCount || "0"}
                     key5={checkedQuestionsCount || "0"}
                     key6={lastSubmittedDate}

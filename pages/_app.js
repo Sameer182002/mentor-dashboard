@@ -9,12 +9,22 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function getRedirectedTo(authToken, pathname) {
   const loginRoutes = ['/login', '/verify-otp']
-  const fstEvaluatorPaths = ['/check-fst-assignment','/fst-assignment','/fst-question-details']
+  const fstEvaluatorPaths = [...loginRoutes,'/','/check-fst-assignment','/fst-assignment','/fst-question-details']
+  const prepaidTaPaths = [...loginRoutes,'/','/upcoming-sessions','/unchecked-questions','/question-details','/meeting-calender']
+  const roles = JSON.parse(localStorage.getItem('taRoles') || "[]")
+  const isPrepaidTa = roles.includes("prepaid-ta")
+  const isFstEvaluator = roles.includes("fst-evaluator")
+
   if (authToken) {
-    if (['/', ...loginRoutes].includes(pathname)) {
-      return '/'
+
+    if(isPrepaidTa && isFstEvaluator) {
+      if(loginRoutes.includes(pathname)) return "/"
+      return pathname
     }
-    if(fstEvaluatorPaths.includes(pathname) && !JSON.parse(localStorage.getItem("isFstEvaluator") || "false")) {
+    if (!isPrepaidTa && prepaidTaPaths.includes(pathname)) {
+      return '/fst-assignment'
+    }
+    if (isPrepaidTa && fstEvaluatorPaths.includes(pathname)) {
       return "/"
     }
     return pathname

@@ -45,11 +45,9 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        flex:1;
     }
     
     .submissionDetails>p:nth-child(3){
-        flex:0.8;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -62,7 +60,7 @@
     }
     .submissionDetails{
         display: flex;
-        gap: 0.5rem;
+        gap: 1.5rem;
         margin-top: 1rem;
     }
     .navigation{

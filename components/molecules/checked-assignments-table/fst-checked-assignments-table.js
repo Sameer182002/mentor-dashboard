@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { truncateText } from '../../../utils/helper'
 import { FstTableRow } from '../fst-table-row/fst-table-row'
 import styles from './fst-checked-assignment.module.css'
 
@@ -27,9 +28,9 @@ export function FstCheckedAssignmentTable({data=[]}){
             <div className={styles.tableData}>
                 {data.map(({studentId='',assignmentId='',assignmentName='',cohort='',studentName='',submittedQuestionsCount='',totalQuestionsCount=''},index)=>
                     <FstTableRow
-                        key1={assignmentName || ""}
-                        key2={studentName || ""}
-                        key3={cohort || ""}
+                        key1={truncateText(assignmentName,20)|| ""}
+                        key2={truncateText(studentName,12) || ""}
+                        key3={truncateText(cohort,14) || ""}
                         key4={submittedQuestionsCount || ""}
                         key5={totalQuestionsCount || ""}
                         key6={"View"} 

@@ -63,12 +63,16 @@ export function VerifyOtp () {
                 taId
             }) || {}
             const {role=[]} = taDetails || {} 
-            if(role?.includes("fst-evaluator")){
-                localStorage.setItem("isFstEvaluator",true)
+            if(!role?.length){
+                localStorage.setItem("taRoles",JSON.stringify(["prepaid-ta"]))
             }else{
-                localStorage.setItem("isFstEvaluator",false)
+                localStorage.setItem("taRoles",JSON.stringify(role))
             }
             setFullName(taDetails?.fullName)
+            if(!role.includes("prepaid-ta")){
+                router.push('/fst-assignment')
+                return
+            }
             router.push('/')         
         }
         catch(error) {

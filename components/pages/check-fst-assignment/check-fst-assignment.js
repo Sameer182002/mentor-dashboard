@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getMentorAssignedSubmission } from "../../../apis";
-import { getDateFromIsoString } from "../../../utils/helper";
+import { getDateFromIsoString, truncateText } from "../../../utils/helper";
 import styles from "./check-fst-assignment.module.css"
 import CheckFstSkeleton from "./check-fst-skeleton";
 
@@ -74,10 +74,10 @@ export function CheckFstAssignmentQuestions(){
                     <div className={styles.questionDetailsBox} onClick={()=>handleClick(_id)}>
                         <p>{title}</p>
                         <div className={styles.submissionDetails}>
-                            <p>Assignment name : <span>{assignmentTitle}</span></p>
-                            <p>Submitted by : <span>{fullName}</span></p>
+                            <p>Assignment name : <span>{truncateText(assignmentTitle,25)}</span></p>
+                            <p>Submitted by : <span>{truncateText(fullName,12)}</span></p>
                             <p>Submitted On : <span>{getDateFromIsoString(createdAt)}</span></p>
-                            <p>Topic : <span>{topicTitle}</span></p>
+                            <p>Topic : <span>{truncateText(topicTitle,12)}</span></p>
                         </div>
                     </div>
                 </div>
