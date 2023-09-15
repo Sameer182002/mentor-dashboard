@@ -9,25 +9,45 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function getRedirectedTo(authToken, pathname) {
   const loginRoutes = ['/login', '/verify-otp']
-  const fstEvaluatorPaths = [...loginRoutes,'/','/check-fst-assignment','/fst-assignment','/fst-question-details']
+  const fstEvaluatorPaths = [...loginRoutes,'/check-fst-assignment','/fst-assignment','/fst-question-details']
   const prepaidTaPaths = [...loginRoutes,'/','/upcoming-sessions','/unchecked-questions','/question-details','/meeting-calender']
   const roles = JSON.parse(localStorage.getItem('taRoles') || "[]")
   const isPrepaidTa = roles.includes("prepaid-ta")
   const isFstEvaluator = roles.includes("fst-evaluator")
+  const isFstTa = roles.includes("fst-ta")
+  const fstTaPaths = [...loginRoutes,'/upcoming-sessions','/meeting-calender']
 
   if (authToken) {
-
-    if(isPrepaidTa && isFstEvaluator) {
-      if(loginRoutes.includes(pathname)) return "/"
+    if(loginRoutes.includes(pathname)){
+      if(isPrepaidTa) return '/'
+      if(isFstEvaluator) return '/fst-assignment'
+      if(isFstTa) return '/meeting-calender'
+    }
+    if(isPrepaidTa && isFstTa && (prepaidTaPaths.includes(pathname) || fstTaPaths.includes(pathname))){ // If fst and prepaid TA and pathname includes fst or prepaidTaPaths
       return pathname
     }
-    if (!isPrepaidTa && prepaidTaPaths.includes(pathname)) {
+    if(isPrepaidTa && isFstEvaluator && (prepaidTaPaths.includes(pathname) || fstEvaluatorPaths.includes(pathname))){ //if prepaidTa and fst evaluator and pathname includes any one of them
+      return pathname
+    }
+    if(isPrepaidTa && prepaidTaPaths.includes(pathname)) { //If prepaid ta and pathname includes prepaidTaPaths
+      return pathname
+    }
+    if(isFstTa && fstTaPaths.includes(pathname)){ // If fstTa and pathname includes fstTaPaths
+      return pathname
+    }
+    if(isFstEvaluator && fstEvaluatorPaths.includes(pathname)){ // If fstEvaluator and pathname includes fstEvaluators
+      return pathname
+    }
+    if (!isPrepaidTa && !isFstTa && (prepaidTaPaths.includes(pathname) || fstTaPaths.includes(pathname)) ) { //If fst evaluator and trying to access fstTaPath or prepaidTaPath then return to fst-assignment
       return '/fst-assignment'
     }
-    if (isPrepaidTa && fstEvaluatorPaths.includes(pathname)) {
+    if (isPrepaidTa && (fstEvaluatorPaths.includes(pathname) || fstTaPaths.includes(pathname))) {  //If Prepaid TA and trying to access fst evaluators or ta path, send to home page
       return "/"
     }
-    return pathname
+    if (!isPrepaidTa && !isFstEvaluator && (prepaidTaPaths.includes(pathname) || fstEvaluatorPaths.includes(pathname))) { //If fst TA and trying to access fst evaluators or ta path, send to meetings page
+      return '/meeting-calender'
+    }
+    return pathname 
   }
   
   if (loginRoutes.includes(pathname)) {

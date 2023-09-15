@@ -21,12 +21,13 @@ export function UpcomingSession(){
                         student:{
                             firstName='',
                             lastName='',
-                            mobile=""
+                            mobile="",
+                            fullName=''
                         }={},
-                        ta:{dyteMeetingLink=''}={}
+                        dyteMeetingLink=''
                     } = session || {}
                 formattedData.push({
-                    name:`${firstName} ${lastName}`,
+                    name:fullName ? fullName : `${firstName} ${lastName}`,
                     mobile,dyteMeetingLink,
                     from : getTimeWithAmPm(from),
                     to : getTimeWithAmPm(to),
