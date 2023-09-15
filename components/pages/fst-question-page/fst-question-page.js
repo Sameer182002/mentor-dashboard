@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { Fragment, useEffect, useState } from "react"
-import { questionMetadataTypes, submissionTypes } from "../../../utils/constants"
+import { ASSIGNMENT_STATUS, questionMetadataTypes, submissionTypes } from "../../../utils/constants"
 import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
 import styles from "./fst-question.module.css"
 import { getFstSubmission, updateFstSubmisison } from "../../../apis";
@@ -17,6 +17,7 @@ export function FstQuestionView(){
     const [questionData,setQuestionData] = useState({})
     const [errorMsg,setErrorMsg] = useState("")
     const [isLoading,setIsLoading] = useState(false)
+    const [isLocked, setIsLocked] = useState(false)
 
     function handleClickRedirect(redirectTo){
         if(redirectTo == "assignment"){
@@ -45,7 +46,9 @@ export function FstQuestionView(){
                 solution = {},
                 marksAchieved ='',
                 evaluationRemarks ='',
-                assignment ={}
+                assignment ={},
+                approvalStatus,
+                rejectionRemarks=[]
             }= data || {}
     
             setQuestionData({
@@ -62,8 +65,11 @@ export function FstQuestionView(){
                 marksAchieved,
                 questionMark : question?.marks,
                 evaluationRemarks,
-                assignment : assignment
+                assignment : assignment,
+                approvalStatus,
+                rejectionRemarks: rejectionRemarks.pop()
             })
+            setIsLocked(evaluationStatus === ASSIGNMENT_STATUS.checked && approvalStatus === ASSIGNMENT_STATUS.approved)
             setIsLoading(false)
         }catch(error){
             console.log(error?.message || error)
@@ -89,9 +95,10 @@ export function FstQuestionView(){
         assignment={},
         marksAchieved ='',
         evaluationRemarks = '',
-        questionMark = ''
+        questionMark = '',
+        approvalStatus,
+        rejectionRemarks
     } = questionData || {}
-
     async function handleCheckingSumission(feedback,marks,status){
         try{
             if(!feedback?.trim()){
@@ -203,6 +210,10 @@ export function FstQuestionView(){
                     errorMsg = {errorMsg}
                     setErrorMsg ={setErrorMsg}
                     evaluationStatus={evaluationStatus}
+                    hasLinkSolution={linkSolution?.length > 0}
+                    approvalStatus= {approvalStatus}
+                    isLocked = {isLocked}
+                    rejectionRemarks={rejectionRemarks?.remarks}
                 />
             </div>
     </div>)

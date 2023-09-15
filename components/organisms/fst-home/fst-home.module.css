@@ -19,6 +19,9 @@
     .checkedAssg{
         margin-bottom: 1.5rem;
     }
+    .uncheckedAsg{
+        margin-bottom: 2rem;
+    }
     .uncheckedAsg h5{
         margin-bottom: 0.7rem;
     }
@@ -55,5 +58,21 @@
     }
     .uncheckedTableHeadStyle span:nth-child(1){
         flex: 1.5;
+    }
+    .message{
+        font-size: 0.6rem;
+        line-height: 0.7rem;
+        font-weight: 400;
+        margin-bottom: 0.7rem;
+        margin-top: 0.25rem;
+        color: #515050;
+    }
+    .rejectedAssignment{
+        font-size: 0.6rem;
+        line-height: 0.7rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-top: 1.2rem;
+        color: #515050;
     }
 }
