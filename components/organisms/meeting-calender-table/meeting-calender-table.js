@@ -63,6 +63,7 @@ export function MeetingCalendarTable({ tableHeadings = [] }) {
       if(isSubmitting || isDataFetching || !isAllInputTimeSlotsAreValid){
         return
       }
+      let isAnyUpdationDone = false
       setIsSubmitting(true)
       const payload = {
         deletedSlotList: [],
@@ -90,21 +91,26 @@ export function MeetingCalendarTable({ tableHeadings = [] }) {
         });
       });
       if (payload?.deletedSlotList?.length) {
+        isAnyUpdationDone = true;
         await axiosInstance.delete("ta-availability", {
           data: { taAvailabilitySlotId: payload.deletedSlotList },
         });
       }
       if (payload?.updatedSLotList?.length) {
+        isAnyUpdationDone = true;
          await axiosInstance.put("ta-availability/slot", {
           data: payload.updatedSLotList,
         });
       }
       if (payload?.addedSlotList?.length) {
+        isAnyUpdationDone = true;
         await axiosInstance.post("ta-availability", {
           data: payload.addedSlotList,
         });
       }
-      toast.success("Successfully Updated.")
+      if(isAnyUpdationDone){
+        toast.success("Successfully Updated.")
+      }
     } catch (error) {
       console.log(error.message)
       toast.error("There seems to be an issue in the data you have input. Kindly add your availability one by one")
