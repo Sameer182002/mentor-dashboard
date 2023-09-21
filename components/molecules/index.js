@@ -7,3 +7,4 @@ export {FstCheckedAssignmentTable} from "./checked-assignments-table/fst-checked
 export {UncheckedAssignmentTable} from "./unchecked-assignment-table/unchecked-assignment-table"
 export {FstQuestionReport} from "./fst-question-report/fst-question-report"
 export {RejectedAssignmentTable} from "./rejected-assignment-table/rejected-assignment-table"
+export {MarksDistributionTable} from './mark-distribution-table/mark-distribution-table'

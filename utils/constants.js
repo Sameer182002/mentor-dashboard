@@ -150,3 +150,8 @@ export const ASSIGNMENT_STATUS = {
     rejected: 'rejected',
     approved: 'approved'
 }
+  export const MARKS_DISTRIBUTION_KEYS = {
+        'screenShareAndCameraScore' : 'Screen share & camera on',
+        'logicBuildingScore' : 'Logic building',
+        'effortScore' : 'efforts',
+  }

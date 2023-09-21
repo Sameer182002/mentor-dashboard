@@ -1,8 +1,9 @@
-import { useState } from "react"
-import { isOnlyDigits } from "../../../utils/helper"
+import { Fragment, useEffect, useState } from "react"
+import { splitMarksByPercentages, isOnlyDigits } from "../../../utils/helper"
 import { Button } from "../../atoms"
 import styles from "./fst-question-report.module.css"
 import { ASSIGNMENT_EVALUATION_STATUS, ASSIGNMENT_STATUS } from "../../../utils/constants"
+import { MarksDistributionTable } from "../mark-distribution-table/mark-distribution-table"
 
 const MARKS_CRITERIA = [
     '40% of Max Marks: Marks on logic building',
@@ -21,13 +22,28 @@ export function FstQuestionReport({
     hasLinkSolution = false,
     approvalStatus,
     isLocked,
-    rejectionRemarks
+    rejectionRemarks,
+    isValidLinkSubmission = false,
+    PrevMarksDistribution ,
+    updateMarkingStatus = () => {}
 }){
     const [feedback, setFeedback] = useState(String(evaluationRemarks) || "")
     const [marks,setMarks] = useState(String(marksAchieved) || "")
+    const [marksDistribution, setMarksDistribution] = useState({
+        'screenShareAndCameraScore' : '',
+        'logicBuildingScore' : '',
+        'effortScore' : '',
+    })
+    const [maxMarks, setMaxMarks] = useState(null)
+
+    useEffect(() => {
+        if(!PrevMarksDistribution) return
+        setMarksDistribution(PrevMarksDistribution)
+    },[PrevMarksDistribution])
 
     function handleInput(key,value){
         if(isLocked) return
+        updateMarkingStatus()
         setErrorMsg("")
         if(key == "feedback"){
             setFeedback(value)
@@ -40,6 +56,38 @@ export function FstQuestionReport({
         }
     }   
     const { checked, rejected} = ASSIGNMENT_STATUS
+    
+    function handleMarksInput (markkey, markAssigned) {
+        setErrorMsg('')
+        updateMarkingStatus()
+        if(!isOnlyDigits(markAssigned)){
+            return
+        }
+        setMarksDistribution({
+            ...marksDistribution,
+            [markkey] : markAssigned ? 
+            Number(markAssigned) : ''
+        })
+    }
+
+    const statusMapping = {
+        pending : "Not Checked",
+        checked : "Checked",
+    }
+
+    useEffect(() => {
+        if(!questionMark) return
+        const {
+            fiftyPercent = '',
+            twentyPercent = '',
+            thirtyPercent = ''
+        } = splitMarksByPercentages(questionMark)
+        setMaxMarks({
+            'screenShareAndCameraScore' : twentyPercent,
+            'logicBuildingScore' : thirtyPercent,
+            'effortScore' : fiftyPercent,
+        })
+    },[questionMark])
 
     return(
         <div className={styles.mainWrapper}>
@@ -48,45 +96,42 @@ export function FstQuestionReport({
                 <p>Status :</p>
                 <p className={styles.evaluationStatus} style={{backgroundColor : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {backgroundColor: 'red'}) }}>{approvalStatus === rejected ? ASSIGNMENT_EVALUATION_STATUS.rejected : ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]}</p>
             </div>
-            {(approvalStatus === rejected && rejectionRemarks) && 
-                <div className={styles.rejectedRemarks}>
-                    <p> <span className={styles.rejectedRemarksPrefix}> Area of improvement:</span> {rejectionRemarks}</p>
-                </div>}
-            {hasLinkSolution ? 
-                <div className={styles.marksCriteria}>
-                    <p>Evaluation Criteria: </p>
-                    <ul>
-                        {MARKS_CRITERIA.map(point => (
-                            <li key={point} className={styles.list}>{point}</li>
-                            ))}
-                    </ul>
-                    <div className={styles.marks}>
-                    <p>Enter total marks here :</p>
+
+            <div className={isValidLinkSubmission ? styles.distributedMarksWrapper : styles.marksWrapper}>
+                <p className={styles.marksHead}>Marks :</p>
+                {isValidLinkSubmission && <p>TOTAL MARKS : {questionMark}</p>}
+
+                {
+                    !isValidLinkSubmission &&
+                    <Fragment>
                         <input 
                             type={"text"} 
                             placeholder={"_ _"} 
                             maxLength={String(questionMark).length == 1 ? 2 : String(questionMark).length}
                             onChange = {(e)=>handleInput("marks",e.target.value)}
-                            value={marks }
-                            readOnly={isLocked}
+                            value={marks}
+                            disabled = {isLocked}
                         ></input>
                         <p>{`/${questionMark}`}</p>
-                    </div>
-                </div>
-                : 
-                <div className={styles.marksWrapper}>
-                    <p>Marks :</p>
-                    <input 
-                        type={"text"} 
-                        placeholder={"_ _"} 
-                        maxLength={String(questionMark).length == 1 ? 2 : String(questionMark).length}
-                        onChange = {(e)=>handleInput("marks",e.target.value)}
-                        value={marks }
-                        readOnly={isLocked}
-                    ></input>
-                    <p>{`/${questionMark}`}</p>
-                </div>
+                    </Fragment>
                 }
+                {
+                    isValidLinkSubmission && (
+                        <div className={styles.marksDistrubution}>
+                            <MarksDistributionTable 
+                                marksPercentage = {splitMarksByPercentages(questionMark)}
+                                handleMarksInput = {handleMarksInput}
+                                marksDistrubution = {marksDistribution}
+                                isLocked = {isLocked}
+                            />
+                        </div>
+                    )
+                }
+            </div>
+            {(approvalStatus === rejected && rejectionRemarks) && 
+                <div className={styles.rejectedRemarks}>
+                    <p> <span className={styles.rejectedRemarksPrefix}> Area of improvement:</span> {rejectionRemarks}</p>
+                </div>}
             <div className={styles.feedbackWrapper}>
                 <p>Feedback :</p>
                 <textarea 
@@ -100,9 +145,13 @@ export function FstQuestionReport({
             <Button 
                 customStyle={`${styles.submitBtn} ${isLocked && styles.disabledBtn}`}
                 buttonText='Submit'
-                onClickAction={()=>{
-                   !isLocked && handleSubmit(feedback,marks,evaluationStatus)
-                }}
+                onClickAction={()=> !isLocked && handleSubmit(
+                    feedback ,
+                    marks ,
+                    evaluationStatus ,
+                    marksDistribution ,
+                    maxMarks
+                )}
             />
         </div>
     )
