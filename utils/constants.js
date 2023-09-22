@@ -137,3 +137,16 @@ export const MONTHS_NAME = [
     available: "Available",
     unavailable: "Unavailable"
   }
+export const ASSIGNMENT_EVALUATION_STATUS = {
+    pending : "Unchecked",
+    checked : "Checked",
+    rejected: 'To Be Re-Evaluate'
+}
+
+export const ASSIGNMENT_STATUS = {
+    pending : "pending",
+    checked : "checked",
+    reEvaluated: 're-evaluated',
+    rejected: 'rejected',
+    approved: 'approved'
+}

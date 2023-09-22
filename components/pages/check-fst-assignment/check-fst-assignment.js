@@ -4,11 +4,12 @@ import { getMentorAssignedSubmission } from "../../../apis";
 import { getDateFromIsoString, truncateText } from "../../../utils/helper";
 import styles from "./check-fst-assignment.module.css"
 import CheckFstSkeleton from "./check-fst-skeleton";
+import { ASSIGNMENT_EVALUATION_STATUS, ASSIGNMENT_STATUS } from "../../../utils/constants";
 
 export function CheckFstAssignmentQuestions(){
     const [questionsData,setQuestionsData] = useState([])
     const [isLoading,setIsLoading] = useState(false)
-
+    const { checked, pending, rejected} = ASSIGNMENT_STATUS
     const router = useRouter()
     const {query,isReady} = router || {}
     const {studentId='',assignmentId=''} = query || {}
@@ -44,10 +45,6 @@ export function CheckFstAssignmentQuestions(){
         router.push('/fst-assignment')
     }
 
-    const evaluationStatusMapping = {
-        pending : "Unchecked",
-        checked : "Checked",
-    }
 
     if(isLoading){
         return <CheckFstSkeleton/>
@@ -67,10 +64,11 @@ export function CheckFstAssignmentQuestions(){
                 assignment:{title : assignmentTitle=''} = {},
                 student : {fullName = ''} = {},
                 createdAt,
-                evaluationStatus
+                evaluationStatus,
+                approvalStatus
             },index)=>
                 <div key={index}>
-                    <p className={styles.evaluationStatus} style={{color : evaluationStatus == "checked" ? "green" : "red" }}>{evaluationStatusMapping?.[evaluationStatus]}</p>
+                    <p className={styles.evaluationStatus} style={{color : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {color: 'red'}) }}>{approvalStatus === rejected ? ASSIGNMENT_EVALUATION_STATUS.rejected : ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]}</p>
                     <div className={styles.questionDetailsBox} onClick={()=>handleClick(_id)}>
                         <p>{title}</p>
                         <div className={styles.submissionDetails}>

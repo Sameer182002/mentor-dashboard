@@ -102,4 +102,78 @@
         font-weight: 500;
         padding-top: 0.3rem;
     }
+    .list{
+        color: #1D252D;
+        font-family: Inter;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.05rem;
+    }
+    .marksCriteria{
+        width: 33.5rem;
+        flex-shrink: 0;
+        margin-top: 0.5rem;
+        border-radius: 0.5rem;
+        background: #F5FAFF;
+        padding: 0.75rem 0.6rem;
+    }
+    .marksCriteria>p:nth-child(1){
+        margin-right: 1.5rem;
+    }
+    .marks > p{
+        color: #1D252D;
+        font-family: Inter;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.05rem;
+    }
+    .marks{
+        margin-top: 0.9rem;
+        margin-bottom: 0.7rem;
+        display: flex;
+    }
+    .marks > input {
+        width: calc(29rem/20);
+        border: 0.75px solid #d2d2d2;;
+        border-radius: 5px;
+        padding: 0.2rem;
+        margin-right: 0.3rem;
+        height: 1rem;
+    }
+    .marks>input:focus{
+        outline: none;
+    }
+    .marksCriteria > p{
+        color: #1D252D;
+        font-family: Inter;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 0.95rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .disabledBtn{
+        background-color: rgba(128, 128, 128, 0.719);
+    }
+    .rejectedRemarks{
+        color: #1D252D;
+        font-family: Inter;
+        font-size: 0.7rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 0.9rem;
+        margin-bottom: 1.2rem;
+        margin-top: 0.6rem;
+        border-radius: 0.5rem;
+        background: #F5FAFF;
+        min-height: 4rem;
+        padding: 0.7rem;
+        word-spacing: 2.5px;
+    }
+    .rejectedRemarksPrefix{
+        font-weight: 400;
+    }
 }

@@ -7,9 +7,11 @@ export function FstTableRow({
     key5 ='',
     key6 = '',
     key7 = '',
+    key8 = '',
     cutomStyle,
     handleClickForCheck,
-    handleClickForUncheck
+    handleClickForUncheck,
+    handleClickForRejected
 }){
     return(
         <div className={`${styles.tableHeader} ${cutomStyle}`}>
@@ -20,6 +22,7 @@ export function FstTableRow({
             {key5 && <p>{key5}</p>} 
             {key6 && <p onClick={handleClickForCheck}> {key6}</p>} 
             {key7 && <p onClick={handleClickForUncheck}>{key7}</p>} 
+            {key8 && <p onClick={handleClickForRejected}>{key8}</p>} 
         </div>
     )
 }
