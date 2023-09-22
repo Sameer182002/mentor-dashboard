@@ -40,6 +40,9 @@
         align-items: center;
         font-weight: 500;
     }
+    .distributedMarksWrapper{
+        padding-top: 0.85rem;
+    }
     .marksWrapper{
         display: flex;
         margin-top: 0.5rem;
@@ -55,6 +58,17 @@
         font-weight: 400;
         line-height: normal;
     }
+    .distributedMarksWrapper>p{
+        color: #606574;
+        font-size: 0.6rem;
+        font-weight: 500;
+    }
+    .marksHead {
+        color: var(--global-primary-color-three) !important;
+        font-size: 0.7rem !important;
+        font-weight: 600 !important;
+        padding-bottom: 0.4rem;
+    }
     .marksWrapper > input {
         width: calc(29rem/20);
         border: 0.75px solid #d2d2d2;;
@@ -65,6 +79,10 @@
     }
     .marksWrapper>input:focus{
         outline: none;
+    }
+    .marksDistrubution{
+        padding : 0.75rem 0 ;
+        width: calc(285rem/20);
     }
     .feedbackInput{
         width: 100%;

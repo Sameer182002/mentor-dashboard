@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { Fragment, useEffect, useState } from "react"
-import { ASSIGNMENT_STATUS, questionMetadataTypes, submissionTypes } from "../../../utils/constants"
+import { MARKS_DISTRIBUTION_KEYS, questionMetadataTypes, submissionTypes, ASSIGNMENT_STATUS } from "../../../utils/constants"
 import LinkRoundedIcon from '@mui/icons-material/LinkRounded';
 import styles from "./fst-question.module.css"
 import { getFstSubmission, updateFstSubmisison } from "../../../apis";
@@ -18,6 +18,8 @@ export function FstQuestionView(){
     const [errorMsg,setErrorMsg] = useState("")
     const [isLoading,setIsLoading] = useState(false)
     const [isLocked, setIsLocked] = useState(false)
+    const [isValidLinkSubmission, setIsValidLinkSubmission] = useState(false)
+    const [isMarkingUpdated, setIsMarkingUpdated] = useState(false)
 
     function handleClickRedirect(redirectTo){
         if(redirectTo == "assignment"){
@@ -31,6 +33,9 @@ export function FstQuestionView(){
             })
             return
         }
+    }
+    function updateMarkingStatus () {
+        setIsMarkingUpdated(true)
     }
 
     async function getSubmission(){
@@ -48,7 +53,8 @@ export function FstQuestionView(){
                 evaluationRemarks ='',
                 assignment ={},
                 approvalStatus,
-                rejectionRemarks=[]
+                rejectionRemarks=[],
+                achievedMarksBreakdown
             }= data || {}
     
             setQuestionData({
@@ -67,9 +73,16 @@ export function FstQuestionView(){
                 evaluationRemarks,
                 assignment : assignment,
                 approvalStatus,
-                rejectionRemarks: rejectionRemarks.pop()
+                rejectionRemarks: rejectionRemarks.pop(),
+                achievedMarksBreakdown
             })
             setIsLocked(evaluationStatus === ASSIGNMENT_STATUS.checked && approvalStatus === ASSIGNMENT_STATUS.approved)
+
+            const isApplyingMarkingCriteria = assignment?.isApplyingMarkingCriteria
+            setIsValidLinkSubmission(
+                isApplyingMarkingCriteria &&
+                question?.submissionType?.includes('link')
+            )
             setIsLoading(false)
         }catch(error){
             console.log(error?.message || error)
@@ -97,30 +110,59 @@ export function FstQuestionView(){
         evaluationRemarks = '',
         questionMark = '',
         approvalStatus,
-        rejectionRemarks
+        rejectionRemarks,
+        achievedMarksBreakdown
     } = questionData || {}
-    async function handleCheckingSumission(feedback,marks,status){
+
+    async function handleCheckingSumission(feedback,marks,status, marksDistribution, maxMarks){
+
+        let totalMarksAchieved = isValidLinkSubmission ? 0 : marks
+        if(isValidLinkSubmission){
+            for (const key in marksDistribution) {
+                const assignedMark = marksDistribution?.[key]
+                if (!assignedMark && assignedMark !== 0) {
+                    setErrorMsg(`Please enter the Marks for ${MARKS_DISTRIBUTION_KEYS?.[key]} properly.`)
+                    return; 
+                }
+                if(assignedMark > maxMarks?.[key]){
+                    setErrorMsg(`Marks for ${MARKS_DISTRIBUTION_KEYS?.[key]}, can not be greater than ${maxMarks[key]}`)
+                    return;
+                }
+                totalMarksAchieved+= assignedMark
+            }
+        }
+
         try{
             if(!feedback?.trim()){
                 setErrorMsg('Please enter your feedback.')
                 return
             }
-            if(!marks){
+            if(!totalMarksAchieved){
                 setErrorMsg('Please enter the marks properly.')
                 return
             }
-            if(marks>questionMark){
+            if(totalMarksAchieved>questionMark){
                 setErrorMsg("Please give valid marks.")
+                return
+            }
+            if(!isMarkingUpdated) {
+                setErrorMsg('Please make some changes before submitting')
                 return
             }
             await updateFstSubmisison({
                 submissionId,
-                marksAchieved : Number(marks), 
-                evaluationRemarks : feedback
+                marksAchieved : Number(totalMarksAchieved), 
+                evaluationRemarks : feedback ,
+                ...(isValidLinkSubmission && {
+                    achievedMarksBreakdown : marksDistribution
+                })
             })
             getSubmission();
         }catch(error){
             console.log(error?.message || error)
+        }
+        finally {
+            setIsMarkingUpdated(false)
         }
     }
     if(isLoading){
@@ -214,6 +256,9 @@ export function FstQuestionView(){
                     approvalStatus= {approvalStatus}
                     isLocked = {isLocked}
                     rejectionRemarks={rejectionRemarks?.remarks}
+                    isValidLinkSubmission={isValidLinkSubmission}
+                    PrevMarksDistribution = {achievedMarksBreakdown}
+                    updateMarkingStatus = {updateMarkingStatus}
                 />
             </div>
     </div>)

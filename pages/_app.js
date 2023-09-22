@@ -47,6 +47,12 @@ function getRedirectedTo(authToken, pathname) {
     if (!isPrepaidTa && !isFstEvaluator && (prepaidTaPaths.includes(pathname) || fstEvaluatorPaths.includes(pathname))) { //If fst TA and trying to access fst evaluators or ta path, send to meetings page
       return '/meeting-calender'
     }
+    if(!isPrepaidTa && isFstEvaluator && (prepaidTaPaths.includes(pathname))){
+      return '/fst-assignment'
+    }
+    if(!isPrepaidTa && isFstTa && (prepaidTaPaths.includes(pathname))){
+      return '/meeting-calender'
+    }
     return pathname 
   }
   

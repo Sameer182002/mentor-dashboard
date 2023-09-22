@@ -175,3 +175,11 @@ export function truncateText(text,length){
     if(!text) return ""
     return text.length > length ? `${text.slice(0, length)}...` : text; 
 }
+
+export function splitMarksByPercentages (marks) {
+    return {
+        fiftyPercent : Math.round(marks * 0.50),
+        twentyPercent : Math.round(marks * 0.20),
+        thirtyPercent : Math.round(marks * 0.30)
+    }
+}

@@ -17,7 +17,7 @@
         font-weight: 500;
     }
     .header>p:nth-child(1){
-        padding-right: 0.2rem;
+        padding-right: 0.5rem;
     }
     .header>p:nth-child(4){
         text-align: center;
@@ -33,7 +33,7 @@
         flex: 1;
     }
     .tableRow>p:nth-child(1){
-        padding-right: 0.2rem;
+        padding-right: 0.5rem;
     }
     .tableRow{
         background-color: unset;
