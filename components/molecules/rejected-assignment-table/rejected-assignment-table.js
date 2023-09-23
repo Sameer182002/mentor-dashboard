@@ -21,7 +21,6 @@ export function RejectedAssignmentTable({data=[]}){
                 key4='Unchecked Questions'
                 key5='Checked Questions'
                 key6='Rejected Questions'
-                key7='Last Submitted'
                 key8="View"
                 cutomStyle={styles.header}
             />
@@ -32,7 +31,6 @@ export function RejectedAssignmentTable({data=[]}){
                 uncheckedQuestionsCount="",
                 checkedQuestionsCount="",
                 rejectedQuestionsCount="",
-                lastRejectedDate="",
                 assignmentId='',
                 studentId=''
             },index)=>
@@ -43,7 +41,6 @@ export function RejectedAssignmentTable({data=[]}){
                     key4={uncheckedQuestionsCount || "0"}
                     key5={checkedQuestionsCount || "0"}
                     key6={rejectedQuestionsCount || "0"}
-                    key7={lastRejectedDate}
                     key8={"View"}
                     cutomStyle={styles.tableRow}
                     handleClickForRejected = {()=>handleClick(studentId,assignmentId)}

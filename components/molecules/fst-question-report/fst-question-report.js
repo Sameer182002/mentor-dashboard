@@ -96,6 +96,10 @@ export function FstQuestionReport({
                 <p>Status :</p>
                 <p className={styles.evaluationStatus} style={{backgroundColor : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {backgroundColor: 'red'}) }}>{approvalStatus === rejected ? ASSIGNMENT_EVALUATION_STATUS.rejected : ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]}</p>
             </div>
+            {(approvalStatus === rejected && rejectionRemarks) && 
+                <div className={styles.rejectedRemarks}>
+                    <p> <span className={styles.rejectedRemarksPrefix}> Area of improvement:</span> {rejectionRemarks}</p>
+                </div>}
 
             <div className={isValidLinkSubmission ? styles.distributedMarksWrapper : styles.marksWrapper}>
                 <p className={styles.marksHead}>Marks :</p>
@@ -111,6 +115,7 @@ export function FstQuestionReport({
                             onChange = {(e)=>handleInput("marks",e.target.value)}
                             value={marks}
                             disabled = {isLocked}
+                            className={styles.defaultInput}
                         ></input>
                         <p>{`/${questionMark}`}</p>
                     </Fragment>
@@ -128,10 +133,6 @@ export function FstQuestionReport({
                     )
                 }
             </div>
-            {(approvalStatus === rejected && rejectionRemarks) && 
-                <div className={styles.rejectedRemarks}>
-                    <p> <span className={styles.rejectedRemarksPrefix}> Area of improvement:</span> {rejectionRemarks}</p>
-                </div>}
             <div className={styles.feedbackWrapper}>
                 <p>Feedback :</p>
                 <textarea 
