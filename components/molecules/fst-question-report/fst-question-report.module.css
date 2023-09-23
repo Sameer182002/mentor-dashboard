@@ -172,6 +172,9 @@
         line-height: 0.95rem;
         margin-bottom: 0.75rem;
     }
+    .defaultInput{
+        width: calc(31rem/20) !important;
+    }
 
     .disabledBtn{
         background-color: rgba(128, 128, 128, 0.719);
@@ -183,7 +186,6 @@
         font-style: normal;
         font-weight: 300;
         line-height: 0.9rem;
-        margin-bottom: 1.2rem;
         margin-top: 0.6rem;
         border-radius: 0.5rem;
         background: #F5FAFF;

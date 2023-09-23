@@ -137,7 +137,7 @@ export function FstQuestionView(){
                 setErrorMsg('Please enter your feedback.')
                 return
             }
-            if(!totalMarksAchieved){
+            if(!totalMarksAchieved && totalMarksAchieved !== 0){
                 setErrorMsg('Please enter the marks properly.')
                 return
             }
