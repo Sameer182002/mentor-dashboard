@@ -54,7 +54,8 @@ export function FstQuestionView(){
                 assignment ={},
                 approvalStatus,
                 rejectionRemarks=[],
-                achievedMarksBreakdown
+                achievedMarksBreakdown,
+                pastSubmission=''
             }= data || {}
     
             setQuestionData({
@@ -74,7 +75,7 @@ export function FstQuestionView(){
                 assignment : assignment,
                 approvalStatus,
                 rejectionRemarks: rejectionRemarks.pop(),
-                achievedMarksBreakdown
+                achievedMarksBreakdown,pastSubmission
             })
             setIsLocked(evaluationStatus === ASSIGNMENT_STATUS.checked && approvalStatus === ASSIGNMENT_STATUS.approved)
 
@@ -111,7 +112,8 @@ export function FstQuestionView(){
         questionMark = '',
         approvalStatus,
         rejectionRemarks,
-        achievedMarksBreakdown
+        achievedMarksBreakdown,
+        pastSubmission
     } = questionData || {}
 
     async function handleCheckingSumission(feedback,marks,status, marksDistribution, maxMarks){
@@ -259,6 +261,7 @@ export function FstQuestionView(){
                     isValidLinkSubmission={isValidLinkSubmission}
                     PrevMarksDistribution = {achievedMarksBreakdown}
                     updateMarkingStatus = {updateMarkingStatus}
+                    pastSubmission ={pastSubmission}
                 />
             </div>
     </div>)

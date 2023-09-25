@@ -25,7 +25,8 @@ export function FstQuestionReport({
     rejectionRemarks,
     isValidLinkSubmission = false,
     PrevMarksDistribution ,
-    updateMarkingStatus = () => {}
+    updateMarkingStatus = () => {},
+    pastSubmission=''
 }){
     const [feedback, setFeedback] = useState(String(evaluationRemarks) || "")
     const [marks,setMarks] = useState(String(marksAchieved) || "")
@@ -55,7 +56,7 @@ export function FstQuestionReport({
             return
         }
     }   
-    const { checked, rejected} = ASSIGNMENT_STATUS
+    const { checked,pending ,rejected} = ASSIGNMENT_STATUS
     
     function handleMarksInput (markkey, markAssigned) {
         setErrorMsg('')
@@ -89,12 +90,18 @@ export function FstQuestionReport({
         })
     },[questionMark])
 
+    function getStatusText(){
+        if(approvalStatus === rejected) return ASSIGNMENT_EVALUATION_STATUS.rejected
+        if(evaluationStatus == pending && pastSubmission) return ASSIGNMENT_EVALUATION_STATUS.reSubmit
+        return ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]
+    }
+
     return(
         <div className={styles.mainWrapper}>
             <h3>Report</h3>
             <div className={styles.statusWrapper}>
                 <p>Status :</p>
-                <p className={styles.evaluationStatus} style={{backgroundColor : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {backgroundColor: 'red'}) }}>{approvalStatus === rejected ? ASSIGNMENT_EVALUATION_STATUS.rejected : ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]}</p>
+                <p className={styles.evaluationStatus} style={{backgroundColor : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {backgroundColor: 'red'}) }}>{getStatusText()}</p>
             </div>
             {(approvalStatus === rejected && rejectionRemarks) && 
                 <div className={styles.rejectedRemarks}>

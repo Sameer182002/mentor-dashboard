@@ -50,6 +50,11 @@ export function CheckFstAssignmentQuestions(){
         return <CheckFstSkeleton/>
     }
 
+    function getStatusText(approvalStatus,evaluationStatus,pastSubmission=''){
+        if(approvalStatus === rejected) return ASSIGNMENT_EVALUATION_STATUS.rejected
+        if(evaluationStatus == pending && pastSubmission) return ASSIGNMENT_EVALUATION_STATUS.reSubmit
+        return ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]
+    }
     return (
         <div className={styles.mainWrapper}>
             <div className={styles.navigation}>
@@ -65,10 +70,11 @@ export function CheckFstAssignmentQuestions(){
                 student : {fullName = ''} = {},
                 createdAt,
                 evaluationStatus,
-                approvalStatus
+                approvalStatus,
+                pastSubmission=''
             },index)=>
                 <div key={index}>
-                    <p className={styles.evaluationStatus} style={{color : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {color: 'red'}) }}>{approvalStatus === rejected ? ASSIGNMENT_EVALUATION_STATUS.rejected : ASSIGNMENT_EVALUATION_STATUS?.[evaluationStatus]}</p>
+                    <p className={styles.evaluationStatus} style={{color : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {color: 'red'}) }}>{getStatusText(approvalStatus,evaluationStatus,pastSubmission)}</p>
                     <div className={styles.questionDetailsBox} onClick={()=>handleClick(_id)}>
                         <p>{title}</p>
                         <div className={styles.submissionDetails}>
