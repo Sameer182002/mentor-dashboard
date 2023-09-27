@@ -140,7 +140,8 @@ export const MONTHS_NAME = [
 export const ASSIGNMENT_EVALUATION_STATUS = {
     pending : "Unchecked",
     checked : "Checked",
-    rejected: 'To Be Re-Evaluate'
+    rejected: 'To Be Re-Evaluated',
+    reSubmit : 'Re-Submitted By Student'
 }
 
 export const ASSIGNMENT_STATUS = {
