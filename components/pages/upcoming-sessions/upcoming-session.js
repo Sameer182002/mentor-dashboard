@@ -24,7 +24,10 @@ export function UpcomingSession(){
                             mobile="",
                             fullName=''
                         }={},
-                        dyteMeetingLink=''
+                        dyteMeetingLink='',
+                        fstCohortData = '',
+                        ta = '',
+                        student = ''
                     } = session || {}
                 formattedData.push({
                     name:fullName ? fullName : `${firstName} ${lastName}`,
@@ -32,7 +35,10 @@ export function UpcomingSession(){
                     from : getTimeWithAmPm(from),
                     to : getTimeWithAmPm(to),
                     date : getFormattedDate(date),
-                    isTimeToJoinMeet : isTimeToJoinMeet(from)
+                    isTimeToJoinMeet : isTimeToJoinMeet(from),
+                    ...(fstCohortData && {cohortName : fstCohortData?.name}),
+                    ...(ta && {taName : ta?.fullName}),
+                    ...(student && {studentId : student?._id})
                 })
                 })
                 setBookedSessions(formattedData)
