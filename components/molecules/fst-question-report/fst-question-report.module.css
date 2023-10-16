@@ -196,4 +196,22 @@
     .rejectedRemarksPrefix{
         font-weight: 400;
     }
+    .alertImg{
+        width: calc(18rem/20);
+        height: calc(18rem/20);
+        position: relative;
+        display: block;
+    }
+    .instructions {
+        font-family: Inter;
+        font-size: calc(12rem/20);
+        line-height: 20px;
+        color: #3F72FA;
+        text-decoration: underline;
+        cursor: default;
+    }
+    .instrucWrapper{
+        display :flex;   
+        gap: 0.3rem;
+    }
 }

@@ -14,10 +14,10 @@ export function CheckFstAssignmentQuestions(){
     const {query,isReady} = router || {}
     const {studentId='',assignmentId=''} = query || {}
 
-    function handleClick(submissionId){
+    function handleClick(submissionId,topicsToConsider,topicsToIgnore){
         router.push({
             pathname : "/fst-question-details",
-            query:{submissionId,studentId,assignmentId}
+            query:{submissionId,studentId,assignmentId,topicsToConsider,topicsToIgnore}
         })
     }
 
@@ -66,16 +66,16 @@ export function CheckFstAssignmentQuestions(){
             {questionsData.map(({
                 _id = "",
                 question : {title ='',topic:{title : topicTitle=''} = {}} = {},
-                assignment:{title : assignmentTitle=''} = {},
+                assignment:{title : assignmentTitle='',topicsToConsider='',topicsToIgnore=''} = {},
                 student : {fullName = ''} = {},
                 createdAt,
                 evaluationStatus,
                 approvalStatus,
                 pastSubmission=''
-            },index)=>
+            },index)=> 
                 <div key={index}>
                     <p className={styles.evaluationStatus} style={{color : evaluationStatus == checked ? "green" : "#FF5932", ...( approvalStatus == rejected && {color: 'red'}) }}>{getStatusText(approvalStatus,evaluationStatus,pastSubmission)}</p>
-                    <div className={styles.questionDetailsBox} onClick={()=>handleClick(_id)}>
+                    <div className={styles.questionDetailsBox} onClick={()=>handleClick(_id,topicsToConsider,topicsToIgnore)}>
                         <p>{title}</p>
                         <div className={styles.submissionDetails}>
                             <p>Assignment name : <span>{truncateText(assignmentTitle,25)}</span></p>

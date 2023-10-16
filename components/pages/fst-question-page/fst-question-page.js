@@ -9,18 +9,20 @@ import Image from "next/image";
 import DescriptionIcon from '@mui/icons-material/Description';
 import { FstQuestionReport } from "../../molecules";
 import FstQuestionSubSkeleton from "./fst-question-skeleton";
+import { MentorEvaluationInstructionModal } from "../../atoms/pop-up/pop-up";
 export function FstQuestionView(){
 
     const router = useRouter()
     const {query,isReady} = router || {}
-    const {studentId='',assignmentId='',submissionId=''} = query || {}
+    const {studentId='',assignmentId='',submissionId='',topicsToConsider='',topicsToIgnore=''} = query || {}
     const [questionData,setQuestionData] = useState({})
     const [errorMsg,setErrorMsg] = useState("")
     const [isLoading,setIsLoading] = useState(false)
     const [isLocked, setIsLocked] = useState(false)
     const [isValidLinkSubmission, setIsValidLinkSubmission] = useState(false)
     const [isMarkingUpdated, setIsMarkingUpdated] = useState(false)
-
+    const [evalInstruct, setEvalInstruct] = useState(false)
+    
     function handleClickRedirect(redirectTo){
         if(redirectTo == "assignment"){
             router.push("/fst-assignment")
@@ -96,6 +98,11 @@ export function FstQuestionView(){
         getSubmission();
     },[isReady])
 
+    useEffect(()=>{
+        if(topicsToConsider||topicsToIgnore){
+            setEvalInstruct(true)
+        }
+    },[])
     const {
         submittedBy = '',
         submittedOn = '',
@@ -173,6 +180,10 @@ export function FstQuestionView(){
 
     return (
     <div className={styles.mainWrapper}> 
+        {(evalInstruct)&&(
+                <MentorEvaluationInstructionModal topicsToConsider={topicsToConsider}
+                    topicsToIgnore={topicsToIgnore} open={evalInstruct}/>
+        )}
         <div className={styles.navigation}>
             <p onClick={()=>handleClickRedirect("assignment")}>{"FST Assignment >"}</p>
             <p onClick={()=>handleClickRedirect("check")}>{assignment?.title?.length>20 ? `${assignment?.title.slice(0,20)}... >`  : `${assignment?.title} >`}</p>
@@ -246,7 +257,7 @@ export function FstQuestionView(){
                         className = {styles.shortAns}
                     /> 
                 }
-                <FstQuestionReport 
+                <FstQuestionReport
                     questionMark= {questionMark}
                     marksAchieved = {marksAchieved}
                     evaluationRemarks = {evaluationRemarks}
@@ -262,6 +273,9 @@ export function FstQuestionView(){
                     PrevMarksDistribution = {achievedMarksBreakdown}
                     updateMarkingStatus = {updateMarkingStatus}
                     pastSubmission ={pastSubmission}
+                    topicsToConsider={topicsToConsider}
+                    topicsToIgnore={topicsToIgnore}
+                    open={evalInstruct}
                 />
             </div>
     </div>)
