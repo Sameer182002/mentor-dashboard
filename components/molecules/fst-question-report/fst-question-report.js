@@ -4,6 +4,9 @@ import { Button } from "../../atoms"
 import styles from "./fst-question-report.module.css"
 import { ASSIGNMENT_EVALUATION_STATUS, ASSIGNMENT_STATUS } from "../../../utils/constants"
 import { MarksDistributionTable } from "../mark-distribution-table/mark-distribution-table"
+import { MentorEvaluationInstructionModal } from "../../atoms/pop-up/pop-up"
+import Image from "next/image"
+import alert from "../../../public/svgs/alert.svg"
 
 const MARKS_CRITERIA = [
     '40% of Max Marks: Marks on logic building',
@@ -26,7 +29,10 @@ export function FstQuestionReport({
     isValidLinkSubmission = false,
     PrevMarksDistribution ,
     updateMarkingStatus = () => {},
-    pastSubmission=''
+    pastSubmission='',
+    topicsToConsider='',
+    topicsToIgnore='',
+    open=false
 }){
     const [feedback, setFeedback] = useState(String(evaluationRemarks) || "")
     const [marks,setMarks] = useState(String(marksAchieved) || "")
@@ -36,7 +42,11 @@ export function FstQuestionReport({
         'effortScore' : '',
     })
     const [maxMarks, setMaxMarks] = useState(null)
-
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const togglePopup = () => {
+        setIsPopupOpen(!isPopupOpen);
+    }
+    
     useEffect(() => {
         if(!PrevMarksDistribution) return
         setMarksDistribution(PrevMarksDistribution)
@@ -140,6 +150,16 @@ export function FstQuestionReport({
                     )
                 }
             </div>
+            {(open)&&(
+                <div className={styles.instrucWrapper}>
+                    <Image src={alert} className={styles.alertImg}/>
+                    <p className= {styles.instructions} onClick={togglePopup}>READ INSTRUCTIONS FOR EVALUATION</p>
+                </div>  
+            )}
+            {(isPopupOpen)&&(
+                <MentorEvaluationInstructionModal  topicsToConsider={topicsToConsider}
+                    topicsToIgnore={topicsToIgnore} open={open} />
+            )}
             <div className={styles.feedbackWrapper}>
                 <p>Feedback :</p>
                 <textarea 
