@@ -10,6 +10,8 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import { FstQuestionReport } from "../../molecules";
 import FstQuestionSubSkeleton from "./fst-question-skeleton";
 import { MentorEvaluationInstructionModal } from "../../atoms/pop-up/pop-up";
+import HtmlParser from "react-html-parser"
+
 export function FstQuestionView(){
 
     const router = useRouter()
@@ -203,7 +205,7 @@ export function FstQuestionView(){
                     <span>{submittedOn || ""}</span>
                 </div>
             </div>
-            <p className={styles.questionText}>Description : {description || ""}</p>
+            <p className={styles.questionText}>Description : {HtmlParser(description) || ""}</p>
             <div className={styles.examples}>
                 {
                     metaData.map((data,index) => (
