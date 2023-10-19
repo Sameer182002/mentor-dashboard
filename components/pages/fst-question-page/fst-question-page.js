@@ -99,10 +99,11 @@ export function FstQuestionView(){
     },[isReady])
 
     useEffect(()=>{
+        if(!isReady) return
         if(topicsToConsider||topicsToIgnore){
             setEvalInstruct(true)
         }
-    },[])
+    },[isReady])
     const {
         submittedBy = '',
         submittedOn = '',
@@ -167,6 +168,7 @@ export function FstQuestionView(){
                 })
             })
             getSubmission();
+            setEvalInstruct(false)  
         }catch(error){
             console.log(error?.message || error)
         }
@@ -177,7 +179,7 @@ export function FstQuestionView(){
     if(isLoading){
         return <FstQuestionSubSkeleton/>
     }
-
+    
     return (
     <div className={styles.mainWrapper}> 
         {(evalInstruct)&&(

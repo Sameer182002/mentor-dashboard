@@ -55,7 +55,7 @@ export function Sidebar({children}) {
                    {    
                         !expanded && 
                             <div className={style.sidebarMenuIcons}>
-                                <MenuIcon className={style.sidebarIcon} sx={{fontSize:"1.2rem"}} onClick={toggleSidebar}/>
+                                <MenuIcon className={style.sidebarIcon} sx={{fontSize:"1.2rem"}} onClick={()=>toggleSidebar()}/>
                                 {
                                     updatedSidebarOptions.filter(option=>option?.isVisible).map(({highlighted,unhighlighted,path,highlightedPaths},index) => (
                                         <Image src={highlightedPaths.includes(router?.pathname) ? highlighted : unhighlighted} onClick={()=>toggleSidebar(path)} className={style.documentIcon} key={index}/>
@@ -69,7 +69,7 @@ export function Sidebar({children}) {
                             <div className={style.closeIconHolder}>
                                 <HighlightOffTwoToneIcon 
                                     className={style.closeIcon} 
-                                    onClick={toggleSidebar}
+                                    onClick={()=>toggleSidebar()}
                                 />
                             </div>
                             <div className="options">

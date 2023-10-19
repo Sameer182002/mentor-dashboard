@@ -14,7 +14,11 @@ export function MentorEvaluationInstructionModal ({topicsToConsider = '', topics
         return null
     }
     return (
-            <Dialog open={open} maxWidth="md">
+            <Dialog open={open} maxWidth="md" PaperProps={{
+                style:{
+                    borderRadius:"10px"
+                }
+            }} className={styles.dialogContainer}>
                 <div className ={styles.popup}>
                     <div className={styles.content}> 
                         <span className={styles.heading}>Please go through the instructions before evaluating.</span>
@@ -50,7 +54,7 @@ export function MentorEvaluationInstructionModal ({topicsToConsider = '', topics
                         </div>)}
                     </div>
                     <div className={styles.btnWrapper}>
-                        <button className={styles.closeButton}><p className={styles.closeButtontext} onClick={handleClose} >I have read it</p></button>  
+                        <button className={styles.closeButton} onClick={handleClose}><p className={styles.closeButtontext} >I have read it</p></button>  
                     </div>
                 </div>  
             </Dialog>
