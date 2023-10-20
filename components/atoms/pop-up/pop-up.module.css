@@ -72,7 +72,7 @@
     }
    .btnWrapper{
     display: flex;
-    justify-content: end;
     padding-top: 1rem;
+    justify-content: flex-end;
    }
 }
