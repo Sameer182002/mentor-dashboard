@@ -208,7 +208,7 @@
         line-height: 20px;
         color: #3F72FA;
         text-decoration: underline;
-        cursor: default;
+        cursor: pointer;
     }
     .instrucWrapper{
         display :flex;   
