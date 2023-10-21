@@ -5,10 +5,11 @@ import tick from "../../../public/svgs/tick.svg"
 import cancel from "../../../public/svgs/cancel.svg"
 import Dialog from '@mui/material/Dialog';
 
-export function MentorEvaluationInstructionModal ({topicsToConsider = '', topicsToIgnore = '', open=false}){
+export function MentorEvaluationInstructionModal ({topicsToConsider = '', topicsToIgnore = '', open=false,setIsPopupOpen=()=>{}}){
     const [showPopup,setShowPopup] = useState(true)
     const handleClose =()=>{
         setShowPopup(false)
+        setIsPopupOpen(false)
     }
     if(!showPopup){
         return null

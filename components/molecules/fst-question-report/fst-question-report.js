@@ -44,7 +44,7 @@ export function FstQuestionReport({
     const [maxMarks, setMaxMarks] = useState(null)
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const togglePopup = () => {
-        setIsPopupOpen(!isPopupOpen);
+        setIsPopupOpen(true);
     }
     
     useEffect(() => {
@@ -150,7 +150,7 @@ export function FstQuestionReport({
                     )
                 }
             </div>
-            {(open)&&(
+            {(topicsToConsider || topicsToIgnore)&&(
                 <div className={styles.instrucWrapper}>
                     <Image src={alert} className={styles.alertImg}/>
                     <p className= {styles.instructions} onClick={togglePopup}>READ INSTRUCTIONS FOR EVALUATION</p>
@@ -158,7 +158,7 @@ export function FstQuestionReport({
             )}
             {(isPopupOpen)&&(
                 <MentorEvaluationInstructionModal  topicsToConsider={topicsToConsider}
-                    topicsToIgnore={topicsToIgnore} open={open} />
+                topicsToIgnore={topicsToIgnore} open={true} setIsPopupOpen={setIsPopupOpen}/>
             )}
             <div className={styles.feedbackWrapper}>
                 <p>Feedback :</p>
