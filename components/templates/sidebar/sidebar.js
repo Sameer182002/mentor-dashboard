@@ -25,6 +25,7 @@ export function Sidebar({children}) {
     const pathMappingByTaRole = {
         "fst-evaluator" : [3],
         "prepaid-ta" : [0,1,2],
+        "prepaid-evaluator" : [0,1,2],
         "fst-ta": [1,2]
     }
     

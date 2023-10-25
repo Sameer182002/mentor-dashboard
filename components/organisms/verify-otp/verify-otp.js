@@ -69,7 +69,7 @@ export function VerifyOtp () {
                 localStorage.setItem("taRoles",JSON.stringify(role))
             }
             setFullName(taDetails?.fullName)
-            if(!role.includes("prepaid-ta")){
+            if(!role.includes("prepaid-ta") && !role.includes("prepaid-evaluator")){
                 router.push('/fst-assignment')
                 return
             }
