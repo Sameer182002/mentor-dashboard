@@ -12,7 +12,7 @@ function getRedirectedTo(authToken, pathname) {
   const fstEvaluatorPaths = [...loginRoutes,'/check-fst-assignment','/fst-assignment','/fst-question-details']
   const prepaidTaPaths = [...loginRoutes,'/','/upcoming-sessions','/unchecked-questions','/question-details','/meeting-calender']
   const roles = JSON.parse(localStorage.getItem('taRoles') || "[]")
-  const isPrepaidTa = roles.includes("prepaid-ta")
+  const isPrepaidTa = roles.includes("prepaid-ta") || roles.includes("prepaid-evaluator")
   const isFstEvaluator = roles.includes("fst-evaluator")
   const isFstTa = roles.includes("fst-ta")
   const fstTaPaths = [...loginRoutes,'/upcoming-sessions','/meeting-calender']
