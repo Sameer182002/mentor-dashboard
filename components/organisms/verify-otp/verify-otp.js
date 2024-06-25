@@ -106,7 +106,7 @@ export function VerifyOtp () {
                 <div className={styles.otpSec}>
                     <div className={styles.logInBox}>
                         <h1 className={styles.contentHead}>Verify Mobile Number</h1>
-                        <div style={{ fontSize: "16px", marginBottom: "20px" }}>We have sent an OTP to verify Mobile {mobile}</div>
+                        <div style={{ fontSize: "16px", marginBottom: "20px" }}>OTP sent to mobile {mobile} via WhatsApp for verification</div>
                         <div className={styles.numberInput}>
                             <input
                                 style={{ borderWidth: "0", boxSizing: "unset", width: "50%" }}
