@@ -4,7 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [ 
-      process.env.S3_DOMAIN
+      process.env.S3_DOMAIN,
+     "https://storage.googleapis.com/"
     ],
 },
 
