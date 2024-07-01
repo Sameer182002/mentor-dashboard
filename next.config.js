@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     domains: [ 
       process.env.S3_DOMAIN,
-     "https://storage.googleapis.com/"
+     "storage.googleapis.com"
     ],
 },
 
